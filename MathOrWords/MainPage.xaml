@@ -6,16 +6,15 @@
     <ContentView>
         <VerticalStackLayout
             Spacing="25"
-            Padding="50"
-            >
+            Padding="50">
+            
             <Label Text="This is your math or words game"
                    FontSize="12"
-                   HorizontalOptions="Center"
-                   />
+                   HorizontalOptions="Center" />
             <Label Text="What game would you like to play?"
                    FontSize="12"
-                   HorizontalOptions="Center"
-                   />
+                   HorizontalOptions="Center" />
+            
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
@@ -30,19 +29,18 @@
                 <Button Grid.Column="0"
                         Text="Math"
                         Margin="5"
-                        />
+                        Clicked="OnMathGameChosen" />
                 <Button Grid.Column="1"
                         Text="Words"
                         Margin="5"
-                        />
+                        Clicked="OnMathGameChosen" />
                 <Button Grid.Row="1"
                         Grid.ColumnSpan="2"
                         Text="Results"
                         BackgroundColor="Green"
                         Margin="5"
-                        />
-
-
+                        Clicked="OnScoresChosen" />
+                
             </Grid>
         </VerticalStackLayout>
     </ContentView>
