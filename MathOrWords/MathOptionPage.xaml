@@ -3,41 +3,57 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MathOrWords.MathOptionPage">
     <VerticalStackLayout
-        Padding="200"
+        Padding="100"
         Spacing="25">
-        
-        <Label 
-            x:Name="EquationLabel"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
 
-        <Entry
-            x:Name="AnswerEntry"
-            HorizontalOptions="Center">
-        </Entry>
+        <VerticalStackLayout
+            x:Name="EquationArea"
+            Spacing="25">
+            
+            <Label 
+                x:Name="EquationLabel"
+                FontSize="32"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
 
-        <Button
-            x:Name="SubmitAnswerButton"
-            Text="Submit"
-            Clicked="OnAnswerSubmitted"
-            HorizontalOptions="Center" />
-        
-        <Label
-            x:Name="AnswerLabel"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+            <Entry
+                x:Name="AnswerEntry"
+                HorizontalOptions="Center">
+            </Entry>
 
-        <Button
-            x:Name="NextEquationButton"
-            Text="Next equation"
-            Clicked="OnNextEquationChosen"
-            HorizontalOptions="Center" />
+            <Button
+                x:Name="SubmitAnswerButton"
+                Text="Submit"
+                Clicked="OnAnswerSubmitted"
+                HorizontalOptions="Center" />
+
+            <Label
+                x:Name="AnswerLabel"
+                IsVisible="false"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+
+            <Button
+                x:Name="NextEquationButton"
+                Text="Next equation"
+                Clicked="OnNextEquationChosen"
+                HorizontalOptions="Center" />
+        </VerticalStackLayout>
 
         <Label
             x:Name="GameOverLabel"
+            IsVisible="false"
+            FontSize="32"
             VerticalOptions="Center" 
-            HorizontalOptions="Center" />  
-        
+            HorizontalOptions="Center" />
+
+        <Button
+            x:Name="ReturnButton"
+            IsVisible="false"
+            Text="Return to main menu"
+            Clicked="OnReturnButtonChosen"
+            HorizontalOptions="Center" />
+
 
     </VerticalStackLayout>
 </ContentPage>

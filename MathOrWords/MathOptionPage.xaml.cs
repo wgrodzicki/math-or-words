@@ -18,20 +18,28 @@ public partial class MathOptionPage : ContentPage
 		InitializeComponent();
 		Option = option;
 		BindingContext = this;
-
+		
 		NextEquationButton.IsEnabled = false;
 		GenerateEquation();
 	}
 
+	/// <summary>
+	/// Handles answer submission and further processing of the game (continue or call the game over).
+	/// </summary>
+	/// <param name="sender"></param>
+	/// <param name="e"></param>
 	private void OnAnswerSubmitted(object sender, EventArgs e)
 	{
 		string rawAnswer = AnswerEntry.Text;
 		int answer;
 
-		if (int.TryParse(rawAnswer, out answer))
+        AnswerLabel.IsVisible = true;
+
+        if (int.TryParse(rawAnswer, out answer))
 		{
 			if (ValidateAnswer(answer))
 			{
+				
 				AnswerLabel.Text = "Correct!";
 				score++;
             }
@@ -40,15 +48,19 @@ public partial class MathOptionPage : ContentPage
                 AnswerLabel.Text = "Incorrect";
 				incorrectAnswers++;
             }
+
+            if (incorrectAnswers < IncorrectAnswersAllowed)
+            {
+                NextEquationButton.IsEnabled = true;
+            }
+            else
+            {
+                GameOver();
+            }
         }
 		else
 		{
             AnswerLabel.Text = "Invalid answer";
-        }
-
-		if (incorrectAnswers <= IncorrectAnswersAllowed)
-		{
-            NextEquationButton.IsEnabled = true;
         }
 	}
 
@@ -86,7 +98,7 @@ public partial class MathOptionPage : ContentPage
 	}
 
 	/// <summary>
-	/// Validates player answer depending on the operation
+	/// Validates player answer depending on the math operation.
 	/// </summary>
 	/// <param name="answer"></param>
 	/// <returns></returns>
@@ -107,11 +119,33 @@ public partial class MathOptionPage : ContentPage
 		}
 	}
 
+	/// <summary>
+	/// Displays the next equation.
+	/// </summary>
+	/// <param name="sender"></param>
+	/// <param name="e"></param>
     private void OnNextEquationChosen(object sender, EventArgs e)
     {
 		AnswerEntry.Text = "";
 		AnswerLabel.Text = "";
+        AnswerLabel.IsVisible = false;
         NextEquationButton.IsEnabled = false;
         GenerateEquation();
+	}
+
+	/// <summary>
+	/// Ends the game and displays the game over screen
+	/// </summary>
+	private void GameOver()
+	{
+		EquationArea.IsVisible = false;
+		GameOverLabel.IsVisible = true;
+        GameOverLabel.Text = $"Game over! Your score is: {score}";
+		ReturnButton.IsVisible = true;
+    }
+
+	private void OnReturnButtonChosen(object sender, EventArgs e)
+	{
+		Navigation.PushAsync(new MainPage());
 	}
 }
