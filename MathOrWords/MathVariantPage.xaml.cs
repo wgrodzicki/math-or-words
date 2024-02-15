@@ -1,23 +1,26 @@
-using System.Timers;
+using MathOrWords.Models;
 
 namespace MathOrWords;
 
-public partial class MathOptionPage : ContentPage
+public partial class MathVariantPage : ContentPage
 {
-	public string Option { get; set; }
-
+	private const int DivisionUpperLimit = 100;
+	private const int MultiplicationUpperLimit = 11;
+	private const int AdditionSubtractionUpperLimit = 100;
     private const int IncorrectAnswersAllowed = 3;
 
+	private string variant;
     private int firstOperand = 0;
 	private int secondOperand = 0;
 	private int score = 0;
 	private int incorrectAnswers = 0;
 
-	public MathOptionPage(string option)
+	public MathVariantPage(string variant)
 	{
 		InitializeComponent();
-		Option = option;
-		BindingContext = this;
+		this.variant = variant;
+
+        BindingContext = this;
 		
 		NextEquationButton.IsEnabled = false;
 		GenerateEquation();
@@ -42,11 +45,13 @@ public partial class MathOptionPage : ContentPage
 				
 				AnswerLabel.Text = "Correct!";
 				score++;
+				SubmitAnswerButton.IsEnabled = false;
             }
 			else
 			{
                 AnswerLabel.Text = "Incorrect";
 				incorrectAnswers++;
+                SubmitAnswerButton.IsEnabled = false;
             }
 
             if (incorrectAnswers < IncorrectAnswersAllowed)
@@ -69,29 +74,35 @@ public partial class MathOptionPage : ContentPage
 	/// </summary>
 	private void GenerateEquation()
 	{
-		string? mathOperator = Option switch // New switch notation
+		string? mathOperator = variant switch // New switch notation
 		{
 			"Addition" => "+", // case => value
-			"Subtraction" => "-",
-			"Multiplication" => "*",
-			"Division" => "/",
+            "Subtraction" => "-",
+            "Multiplication" => "*",
+            "Division" => "/",
 			_ => "" // Default
 		};
 
 		Random random = new Random();
 		
-		if (Option == "Division")
+		if (variant == "Division")
 		{
 			do
 			{
-				firstOperand = random.Next(1, 100);
-				secondOperand = random.Next(1, 100);
+				firstOperand = random.Next(1, DivisionUpperLimit);
+				secondOperand = random.Next(1, DivisionUpperLimit);
 			} while (firstOperand < secondOperand || firstOperand % secondOperand != 0);
 		}
+		else if (variant == "Multiplication")
+
+        {
+            firstOperand = random.Next(1, MultiplicationUpperLimit);
+            secondOperand = random.Next(1, MultiplicationUpperLimit);
+        }
 		else
 		{
-            firstOperand = random.Next(1, 100);
-            secondOperand = random.Next(1, 100);
+            firstOperand = random.Next(1, AdditionSubtractionUpperLimit);
+            secondOperand = random.Next(1, AdditionSubtractionUpperLimit);
         }
 
 		EquationLabel.Text = $"{firstOperand} {mathOperator} {secondOperand}";
@@ -104,7 +115,7 @@ public partial class MathOptionPage : ContentPage
 	/// <returns></returns>
 	private bool ValidateAnswer(int answer)
 	{
-		switch (Option)
+		switch (variant)
 		{
 			case "Addition":
 				return firstOperand + secondOperand == answer ? true : false;
@@ -128,16 +139,25 @@ public partial class MathOptionPage : ContentPage
     {
 		AnswerEntry.Text = "";
 		AnswerLabel.Text = "";
+        SubmitAnswerButton.IsEnabled = true;
         AnswerLabel.IsVisible = false;
         NextEquationButton.IsEnabled = false;
         GenerateEquation();
 	}
 
 	/// <summary>
-	/// Ends the game and displays the game over screen
+	/// Ends the game, saves the score and displays the game over screen
 	/// </summary>
 	private void GameOver()
 	{
+		MainPage.Games.Add(new Models.Game
+		{
+			Score = score,
+			Date = DateTime.Now,
+			GameMode = GameMode.Math,
+			MathVariant = variant
+		});
+
 		EquationArea.IsVisible = false;
 		GameOverLabel.IsVisible = true;
         GameOverLabel.Text = $"Game over! Your score is: {score}";

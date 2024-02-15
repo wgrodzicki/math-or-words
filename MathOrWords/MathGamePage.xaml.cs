@@ -12,6 +12,6 @@ public partial class MathGamePage : ContentPage
 	{
 		Button button = (Button)sender;
 
-		Navigation.PushAsync(new MathOptionPage(button.Text));
+        Navigation.PushAsync(new MathVariantPage(button.Text));
 	}
 }

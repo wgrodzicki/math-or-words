@@ -40,9 +40,7 @@
                         Text="Division"
                         Margin="5"
                         Clicked="OnMathOptionChosen" />
-
             </Grid>
-
         </VerticalStackLayout>
     </ContentView>
 </ContentPage>
