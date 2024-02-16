@@ -166,6 +166,12 @@ public partial class MathVariantPage : ContentPage
 
 	private void OnReturnButtonChosen(object sender, EventArgs e)
 	{
-		Navigation.PushAsync(new MainPage());
+		//Navigation.PushAsync(new MainPage());
+		ReturnToMainPage();
 	}
+
+    private async Task ReturnToMainPage()
+    {
+        await Shell.Current.GoToAsync("//MainPage");
+    }
 }

@@ -2,45 +2,63 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MathOrWords.MathGamePage"
-             Title="MathGamePage">
+             BackgroundImageSource="background_blue.png">
+    
     <ContentView>
-        <VerticalStackLayout
-            Spacing="25"
-            Padding="50">
+        
+        <VerticalStackLayout Spacing="25"
+                             Padding="100">
             
-            <Label  Text="Math Game"
-                    VerticalOptions="Center" 
-                    HorizontalOptions="Center" />
+            <Label Text="Choose operation:"
+                   FontSize="40"
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Center" />
 
-            <Grid>
+            <Grid HorizontalOptions="Center">
+                
                 <Grid.RowDefinitions>
+                    
                     <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
+                    
+                    <ColumnDefinition Width="200" />
+                    
                 </Grid.ColumnDefinitions>
-
-                <Button Grid.Column="0"
+                
+                <Button Grid.Row="0"
+                        Grid.Column="0"
                         Text="Addition"
                         Margin="5"
                         Clicked="OnMathOptionChosen" />
-                <Button Grid.Column="1"
+                
+                <Button Grid.Row="1"
+                        Grid.Column="0"
                         Text="Subtraction"
                         Margin="5"
                         Clicked="OnMathOptionChosen" />
-                <Button Grid.Column="2"
+                
+                <Button Grid.Row="2"
+                        Grid.Column="0"
                         Text="Multiplication"
                         Margin="5"
                         Clicked="OnMathOptionChosen" />
-                <Button Grid.Column="3"
+                
+                <Button Grid.Row="3"
+                        Grid.Column="0"
                         Text="Division"
                         Margin="5"
                         Clicked="OnMathOptionChosen" />
+                
             </Grid>
+            
         </VerticalStackLayout>
+        
     </ContentView>
+    
 </ContentPage>

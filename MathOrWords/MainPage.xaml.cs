@@ -24,7 +24,7 @@ namespace MathOrWords
 
         private void OnScoresChosen(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new ScoresPage(Games));
+            Navigation.PushAsync(new ScoresPage());
         }
     }
 }

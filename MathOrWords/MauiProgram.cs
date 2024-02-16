@@ -11,8 +11,8 @@ namespace MathOrWords
                 .UseMauiApp<App>()
                 .ConfigureFonts(fonts =>
                 {
-                    fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-                    fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+                    fonts.AddFont("Fredoka-Regular.ttf", "FredokaRegular");
+                    fonts.AddFont("IndieFlower-Regular.ttf", "IndieFlowerRegular");
                 });
 
 #if DEBUG
