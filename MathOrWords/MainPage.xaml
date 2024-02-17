@@ -13,51 +13,32 @@
                    FontSize="60"
                    HorizontalOptions="Center" />
 
-            <Grid>
-                
-                <Grid.RowDefinitions>
-
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition Height="50" />
-                    <RowDefinition></RowDefinition>
-                    
-                </Grid.RowDefinitions>
-
-                <Grid.ColumnDefinitions>
-                    
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    
-                </Grid.ColumnDefinitions>
+            <Grid RowDefinitions="*, 50, *"
+                  ColumnDefinitions="*, *, *, *, *, *, *, *, *, *">
 
                 <Button Grid.Column="2"
                         Grid.ColumnSpan="3"
                         Text="Math"
                         Margin="15"
+                        MaximumWidthRequest="250"
                         Clicked="OnMathGameChosen" />
                 
                 <Button Grid.Column="5"
                         Grid.ColumnSpan="3"
                         Text="Words"
                         Margin="15"
+                        MaximumWidthRequest="250"
                         Clicked="OnWordsGameChosen" />
 
                 <Button Grid.Row="2"
                         Grid.Column="4"
                         Grid.ColumnSpan="2"
-                        Text="Results"
+                        Text="Scores"
                         BackgroundColor="Green"
                         BorderWidth="2"
                         BorderColor="DarkGreen"
                         Margin="5"
+                        MaximumWidthRequest="150"
                         Clicked="OnScoresChosen" />
                 
             </Grid>

@@ -4,8 +4,29 @@
              x:Class="MathOrWords.ScoresPage"
              BackgroundImageSource="background_blue.png">
     <ScrollView>
-        
-        <VerticalStackLayout Padding="150">
+
+        <VerticalStackLayout Padding="50">
+
+            <Grid RowDefinitions="70"
+                  ColumnDefinitions="2*, *, *, *">
+                
+                <Label Grid.Column="0"
+                       Text="Date"
+                       FontSize="32"
+                       HorizontalTextAlignment="Center" />
+                
+                <Label Grid.Column="1"
+                       Text="Score"
+                       FontSize="32"
+                       HorizontalTextAlignment="Center" />
+                
+                <Label Grid.Column="2"
+                       Text="Mode"
+                       FontSize="32"
+                       HorizontalTextAlignment="Center" />
+                
+            </Grid>
+            
             
             <CollectionView x:Name="GamesList">
                 
@@ -13,22 +34,8 @@
                     
                     <DataTemplate>
 
-                        <Grid>
-
-                            <Grid.RowDefinitions>
-                                
-                                <RowDefinition Height="35" />
-                                
-                            </Grid.RowDefinitions>
-
-                            <Grid.ColumnDefinitions>
-                                
-                                <ColumnDefinition Width="2*" />
-                                <ColumnDefinition Width="2*" />
-                                <ColumnDefinition Width="2*" />
-                                <ColumnDefinition Width="*" />
-                                
-                            </Grid.ColumnDefinitions>
+                        <Grid RowDefinitions="35"
+                              ColumnDefinitions="2*, *, *, *">
 
                             <Label Grid.Column="0"
                                    Text="{Binding Date}"

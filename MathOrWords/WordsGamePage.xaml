@@ -3,10 +3,55 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MathOrWords.WordsGamePage"
              BackgroundImageSource="background_blue.png">
-    <VerticalStackLayout>
-        <Label 
-            Text="Words Game"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+    
+    <VerticalStackLayout Padding="75"
+                         Spacing="25">
+
+        <VerticalStackLayout x:Name="QuestionArea"
+                             Spacing="25">
+
+            <Label x:Name="QuestionLabel"
+                   FontSize="32"
+                   HorizontalTextAlignment="Center"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center" />
+
+            <Entry x:Name="AnswerEntry"
+                   FontSize="32"
+                   HorizontalOptions="Center">
+            </Entry>
+
+            <Button x:Name="SubmitAnswerButton"
+                    Text="Submit"
+                    Clicked="OnAnswerSubmitted"
+                    HorizontalOptions="Center" />
+
+            <Label x:Name="AnswerLabel"
+                   FontSize="20"
+                   IsVisible="false"
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Center" />
+
+            <Button x:Name="NextQuestionButton"
+                    Text="Next question"
+                    Clicked="OnNextQuestionChosen"
+                    HorizontalOptions="Center" />
+
+        </VerticalStackLayout>
+
+        <Label x:Name="GameOverLabel"
+               IsVisible="false"
+               FontSize="40"
+               Padding="50"
+               VerticalOptions="Center" 
+               HorizontalOptions="Center" />
+
+        <Button x:Name="ReturnButton"
+                IsVisible="false"
+                Text="Return to main menu"
+                Clicked="OnReturnButtonChosen"
+                HorizontalOptions="Center" />
+
     </VerticalStackLayout>
+    
 </ContentPage>

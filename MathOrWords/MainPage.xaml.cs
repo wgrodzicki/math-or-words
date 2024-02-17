@@ -12,6 +12,13 @@ namespace MathOrWords
             Games = new List<Game>();
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            this.Window.MinimumHeight = 600;
+            this.Window.MinimumWidth = 800;
+        }
+
         private void OnMathGameChosen(object sender, EventArgs e)
         {
             Navigation.PushAsync(new MathGamePage()); // Asynchronous execution

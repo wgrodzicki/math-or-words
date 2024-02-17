@@ -26,24 +26,67 @@ public partial class MathVariantPage : ContentPage
 		GenerateEquation();
 	}
 
-	/// <summary>
-	/// Handles answer submission and further processing of the game (continue or call the game over).
-	/// </summary>
-	/// <param name="sender"></param>
-	/// <param name="e"></param>
-	private void OnAnswerSubmitted(object sender, EventArgs e)
+
+    /// <summary>
+    /// Generates a new equation to solve by the player. Makes sure the division results only in whole numbers.
+    /// </summary>
+    private void GenerateEquation()
+    {
+        string? mathOperator = variant switch // New switch notation
+        {
+            "Addition" => "+", // case => value
+            "Subtraction" => "-",
+            "Multiplication" => "×",
+            "Division" => "÷",
+            _ => "" // Default
+        };
+
+        Random random = new Random();
+
+        if (variant == "Division")
+        {
+            do
+            {
+                firstOperand = random.Next(1, DivisionUpperLimit);
+                secondOperand = random.Next(1, DivisionUpperLimit);
+            } while (firstOperand < secondOperand || firstOperand % secondOperand != 0);
+        }
+        else if (variant == "Multiplication")
+
+        {
+            firstOperand = random.Next(1, MultiplicationUpperLimit);
+            secondOperand = random.Next(1, MultiplicationUpperLimit);
+        }
+        else
+        {
+            firstOperand = random.Next(1, AdditionSubtractionUpperLimit);
+            secondOperand = random.Next(1, AdditionSubtractionUpperLimit);
+        }
+
+        EquationLabel.Text = $"{firstOperand} {mathOperator} {secondOperand}";
+    }
+
+
+    /// <summary>
+    /// Handles answer submission and further processing of the game (continue or call the game over).
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void OnAnswerSubmitted(object sender, EventArgs e)
 	{
 		string rawAnswer = AnswerEntry.Text;
 		int answer;
 
         AnswerLabel.IsVisible = true;
 
+        // Initial verification if the answer is an int
         if (int.TryParse(rawAnswer, out answer))
 		{
-			if (ValidateAnswer(answer))
+            AnswerEntry.IsEnabled = false;
+
+            if (ValidateAnswer(answer))
 			{
-				
-				AnswerLabel.Text = "Correct!";
+                AnswerLabel.Text = "Correct!";
 				score++;
 				SubmitAnswerButton.IsEnabled = false;
             }
@@ -60,7 +103,7 @@ public partial class MathVariantPage : ContentPage
             }
             else
             {
-                GameOver();
+				GamePage.GameOver(score, GameMode.Math, EquationArea, GameOverLabel, ReturnButton, variant);
             }
         }
 		else
@@ -69,44 +112,6 @@ public partial class MathVariantPage : ContentPage
         }
 	}
 
-	/// <summary>
-	/// Generates a new equation to solve by the player. Makes sure the division results only in whole numbers.
-	/// </summary>
-	private void GenerateEquation()
-	{
-		string? mathOperator = variant switch // New switch notation
-		{
-			"Addition" => "+", // case => value
-            "Subtraction" => "-",
-            "Multiplication" => "*",
-            "Division" => "/",
-			_ => "" // Default
-		};
-
-		Random random = new Random();
-		
-		if (variant == "Division")
-		{
-			do
-			{
-				firstOperand = random.Next(1, DivisionUpperLimit);
-				secondOperand = random.Next(1, DivisionUpperLimit);
-			} while (firstOperand < secondOperand || firstOperand % secondOperand != 0);
-		}
-		else if (variant == "Multiplication")
-
-        {
-            firstOperand = random.Next(1, MultiplicationUpperLimit);
-            secondOperand = random.Next(1, MultiplicationUpperLimit);
-        }
-		else
-		{
-            firstOperand = random.Next(1, AdditionSubtractionUpperLimit);
-            secondOperand = random.Next(1, AdditionSubtractionUpperLimit);
-        }
-
-		EquationLabel.Text = $"{firstOperand} {mathOperator} {secondOperand}";
-	}
 
 	/// <summary>
 	/// Validates player answer depending on the math operation.
@@ -130,6 +135,7 @@ public partial class MathVariantPage : ContentPage
 		}
 	}
 
+
 	/// <summary>
 	/// Displays the next equation.
 	/// </summary>
@@ -137,41 +143,26 @@ public partial class MathVariantPage : ContentPage
 	/// <param name="e"></param>
     private void OnNextEquationChosen(object sender, EventArgs e)
     {
-		AnswerEntry.Text = "";
-		AnswerLabel.Text = "";
-        SubmitAnswerButton.IsEnabled = true;
+        AnswerEntry.IsEnabled = true;
+        AnswerEntry.Text = "";
+
         AnswerLabel.IsVisible = false;
+        AnswerLabel.Text = "";
+
+        SubmitAnswerButton.IsEnabled = true;
         NextEquationButton.IsEnabled = false;
+
         GenerateEquation();
 	}
 
+
 	/// <summary>
-	/// Ends the game, saves the score and displays the game over screen
+	/// Switches back to the main page.
 	/// </summary>
-	private void GameOver()
+	/// <param name="sender"></param>
+	/// <param name="e"></param>
+	private async void OnReturnButtonChosen(object sender, EventArgs e)
 	{
-		MainPage.Games.Add(new Models.Game
-		{
-			Score = score,
-			Date = DateTime.Now,
-			GameMode = GameMode.Math,
-			MathVariant = variant
-		});
-
-		EquationArea.IsVisible = false;
-		GameOverLabel.IsVisible = true;
-        GameOverLabel.Text = $"Game over! Your score is: {score}";
-		ReturnButton.IsVisible = true;
-    }
-
-	private void OnReturnButtonChosen(object sender, EventArgs e)
-	{
-		//Navigation.PushAsync(new MainPage());
-		ReturnToMainPage();
-	}
-
-    private async Task ReturnToMainPage()
-    {
-        await Shell.Current.GoToAsync("//MainPage");
+		GamePage.ReturnToMainPage();
     }
 }

@@ -12,6 +12,7 @@
             
             <Label x:Name="EquationLabel"
                    FontSize="50"
+                   HorizontalTextAlignment="Center"
                    VerticalOptions="Center"
                    HorizontalOptions="Center" />
 

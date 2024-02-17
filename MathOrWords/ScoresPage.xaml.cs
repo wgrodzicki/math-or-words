@@ -10,21 +10,14 @@ public partial class ScoresPage : ContentPage
 		InitializeComponent();
 		BindingContext = this;
 
-		PrintGames("Math");
+		PrintGames();
 	}
 
-	private void PrintGames(string gameMode)
+	private void PrintGames()
 	{
-		IEnumerable<Game> gamesToPrint;
+		IEnumerable<Game> gamesToPrint = MainPage.Games.OrderByDescending(x => x.Date);
 
-        if (gameMode == "Math")
-		{
-			gamesToPrint = MainPage.Games.Where(x => x.GameMode == GameMode.Math).OrderByDescending(x => x.Date);
-		}
-		else
-		{
-            gamesToPrint = MainPage.Games.Where(x => x.GameMode == GameMode.Words).OrderByDescending(x => x.Date);
-        }
+        //gamesToPrint = MainPage.Games.Where(x => x.GameMode == GameMode.Words).OrderByDescending(x => x.Date);
 
         GamesList.ItemsSource = gamesToPrint;
     }
