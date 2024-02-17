@@ -169,7 +169,7 @@ public partial class WordsGamePage : ContentPage
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private async void OnReturnButtonChosen(object sender, EventArgs e)
+    private void OnReturnButtonChosen(object sender, EventArgs e)
 	{
 		GamePage.ReturnToMainPage();
 	}
