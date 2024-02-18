@@ -38,22 +38,22 @@
                               ColumnDefinitions="2*, *, *, *">
 
                             <Label Text="{Binding Date}"
-                                   FontSize="20"
+                                   FontSize="24"
                                    HorizontalTextAlignment="Center"
                                    Grid.Column="0" />
                             
                             <Label Text="{Binding Score}"
-                                   FontSize="20"
+                                   FontSize="24"
                                    HorizontalTextAlignment="Center"
                                    Grid.Column="1" />
                             
                             <Label Text="{Binding GameMode}"
-                                   FontSize="20"
+                                   FontSize="24"
                                    HorizontalTextAlignment="Center"
                                    Grid.Column="2" />
                             
                             <Label Text="{Binding MathVariant}"
-                                   FontSize="20"
+                                   FontSize="24"
                                    HorizontalTextAlignment="Center"
                                    Grid.Column="3" />
                             

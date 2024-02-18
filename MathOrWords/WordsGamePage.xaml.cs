@@ -91,7 +91,7 @@ public partial class WordsGamePage : ContentPage
         }
 
         // Initial verification if the answer is alphanumerical
-        if (answer.All(x => Char.IsLetter(x) == true))
+        if (answer.All(x => Char.IsLetter(x) == true || Char.IsWhiteSpace(x) == true))
         {
             answer = answer.Trim().ToLower();
             AnswerEntry.IsEnabled = false;
