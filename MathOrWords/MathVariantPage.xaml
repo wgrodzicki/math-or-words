@@ -4,54 +4,61 @@
              x:Class="MathOrWords.MathVariantPage"
              BackgroundImageSource="background_blue.png">
     
-    <VerticalStackLayout Padding="100"
-                         Spacing="25">
-
-        <VerticalStackLayout x:Name="EquationArea"
-                             Spacing="25">
+    <ContentView>
+        
+        <VerticalStackLayout Spacing="25"
+                             Padding="100">
             
-            <Label x:Name="EquationLabel"
-                   FontSize="50"
-                   HorizontalTextAlignment="Center"
-                   VerticalOptions="Center"
-                   HorizontalOptions="Center" />
-
-            <Entry x:Name="AnswerEntry"
-                   FontSize="32"
-                   HorizontalOptions="Center">
-            </Entry>
-
-            <Button x:Name="SubmitAnswerButton"
-                    Text="Submit"
-                    Clicked="OnAnswerSubmitted"
-                    HorizontalOptions="Center" />
-
-            <Label x:Name="AnswerLabel"
-                   FontSize="20"
-                   IsVisible="false"
+            <Label Text="Choose operation:"
+                   FontSize="40"
                    VerticalOptions="Center" 
                    HorizontalOptions="Center" />
 
-            <Button x:Name="NextEquationButton"
-                    Text="Next equation"
-                    Clicked="OnNextEquationChosen"
-                    HorizontalOptions="Center" />
+            <Grid HorizontalOptions="Center">
+                
+                <Grid.RowDefinitions>
+                    
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    
+                    <ColumnDefinition Width="200" />
+                    
+                </Grid.ColumnDefinitions>
+                
+                <Button Text="Addition"
+                        Clicked="OnMathOptionChosen"
+                        Margin="5"
+                        Grid.Row="0"
+                        Grid.Column="0" />
+                
+                <Button Text="Subtraction"
+                        Clicked="OnMathOptionChosen"
+                        Margin="5"
+                        Grid.Row="1"
+                        Grid.Column="0" />
+                
+                <Button Text="Multiplication"
+                        Clicked="OnMathOptionChosen"
+                        Margin="5"
+                        Grid.Row="2"
+                        Grid.Column="0" />
+                
+                <Button Text="Division"
+                        Clicked="OnMathOptionChosen"
+                        Margin="5"
+                        Grid.Row="3"
+                        Grid.Column="0" />
+                
+            </Grid>
             
         </VerticalStackLayout>
-
-        <Label x:Name="GameOverLabel"
-               IsVisible="false"
-               FontSize="40"
-               Padding="50"
-               VerticalOptions="Center" 
-               HorizontalOptions="Center" />
-
-        <Button x:Name="ReturnButton"
-                IsVisible="false"
-                Text="Return to main menu"
-                Clicked="OnReturnButtonChosen"
-                HorizontalOptions="Center" />
         
-    </VerticalStackLayout>
+    </ContentView>
     
 </ContentPage>

@@ -16,31 +16,31 @@
             <Grid RowDefinitions="*, 50, *"
                   ColumnDefinitions="*, *, *, *, *, *, *, *, *, *">
 
-                <Button Grid.Column="2"
-                        Grid.ColumnSpan="3"
-                        Text="Math"
+                <Button Text="Math"
+                        Clicked="OnMathGameChosen"
                         Margin="15"
                         MaximumWidthRequest="250"
-                        Clicked="OnMathGameChosen" />
+                        Grid.Column="2"
+                        Grid.ColumnSpan="3" />
                 
-                <Button Grid.Column="5"
-                        Grid.ColumnSpan="3"
-                        Text="Words"
+                <Button Text="Words"
+                        Clicked="OnWordsGameChosen"
                         Margin="15"
                         MaximumWidthRequest="250"
-                        Clicked="OnWordsGameChosen" />
+                        Grid.Column="5"
+                        Grid.ColumnSpan="3" />
 
-                <Button Grid.Row="2"
-                        Grid.Column="4"
-                        Grid.ColumnSpan="2"
-                        Text="Scores"
+                <Button Text="Scores"
+                        Clicked="OnScoresChosen"
                         BackgroundColor="Green"
                         BorderWidth="2"
                         BorderColor="DarkGreen"
                         Margin="5"
                         MaximumWidthRequest="150"
-                        Clicked="OnScoresChosen" />
-                
+                        Grid.Row="2"
+                        Grid.Column="4"
+                        Grid.ColumnSpan="2" />
+
             </Grid>
             
         </VerticalStackLayout>

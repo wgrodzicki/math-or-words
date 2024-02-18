@@ -73,16 +73,19 @@
 	  <Compile Update="MathVariantPage.xaml.cs">
 	    <DependentUpon>MathVariantPage.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="MathGamePage.xaml.cs">
+	    <DependentUpon>MathGamePage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="ScoresPage.xaml.cs">
 	    <DependentUpon>ScoresPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="MathGamePage.xaml">
+	  <MauiXaml Update="MathVariantPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="MathVariantPage.xaml">
+	  <MauiXaml Update="MathGamePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="ScoresPage.xaml">

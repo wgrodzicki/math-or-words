@@ -21,7 +21,7 @@ namespace MathOrWords
 
         private void OnMathGameChosen(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new MathGamePage()); // Asynchronous execution
+            Navigation.PushAsync(new MathVariantPage()); // Asynchronous execution
         }
 
         private void OnWordsGameChosen(object sender, EventArgs e)

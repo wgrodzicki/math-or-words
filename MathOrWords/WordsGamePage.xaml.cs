@@ -67,7 +67,7 @@ public partial class WordsGamePage : ContentPage
 
         // Build question
         string article = vowels.Contains(wordCategories[wordCategoryIndex][0]) ? "An" : "A";
-        questionText = $"{article} {wordCategories[wordCategoryIndex]} that {constraintCategories[constraintCategoryIndex]}:\n{letter}";
+        questionText = $"{article} {wordCategories[wordCategoryIndex]} that {constraintCategories[constraintCategoryIndex]}: {letter}";
 
         QuestionLabel.Text = questionText;
     }
@@ -81,26 +81,32 @@ public partial class WordsGamePage : ContentPage
     private void OnAnswerSubmitted(object sender, EventArgs e)
 	{
         string answer = AnswerEntry.Text;
-        answer = answer.Trim().ToLower();
-
         AnswerLabel.IsVisible = true;
+
+        // Initial verification if the answer is exists
+        if (String.IsNullOrWhiteSpace(answer))
+        {
+            AnswerLabel.Text = "Invalid answer";
+            return;
+        }
 
         // Initial verification if the answer is alphanumerical
         if (answer.All(x => Char.IsLetter(x) == true))
         {
+            answer = answer.Trim().ToLower();
             AnswerEntry.IsEnabled = false;
 
             if (ValidateAnswer(answer))
             {
                 AnswerLabel.Text = "Correct!";
                 score++;
-                SubmitAnswerButton.IsEnabled = false;
+                SubmitAnswerButton.IsVisible = false;
             }
             else
             {
                 AnswerLabel.Text = "Incorrect";
                 incorrectAnswers++;
-                SubmitAnswerButton.IsEnabled = false;
+                SubmitAnswerButton.IsVisible = false;
             }
 
             if (incorrectAnswers < IncorrectAnswersAllowed)
@@ -120,7 +126,7 @@ public partial class WordsGamePage : ContentPage
 
 
     /// <summary>
-    /// 
+    /// Validates player answer depending on the current constraint.
     /// </summary>
     /// <param name="answer"></param>
     /// <returns></returns>
@@ -157,7 +163,7 @@ public partial class WordsGamePage : ContentPage
         AnswerLabel.IsVisible = false;
         AnswerLabel.Text = "";
 
-        SubmitAnswerButton.IsEnabled = true;
+        SubmitAnswerButton.IsVisible = true;
         NextQuestionButton.IsEnabled = false;
 
         GenerateQuestion();

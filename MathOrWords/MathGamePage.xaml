@@ -4,61 +4,71 @@
              x:Class="MathOrWords.MathGamePage"
              BackgroundImageSource="background_blue.png">
     
-    <ContentView>
-        
-        <VerticalStackLayout Spacing="25"
-                             Padding="100">
-            
-            <Label Text="Choose operation:"
-                   FontSize="40"
-                   VerticalOptions="Center" 
-                   HorizontalOptions="Center" />
+    <VerticalStackLayout Padding="100"
+                         Spacing="25">
 
-            <Grid HorizontalOptions="Center">
-                
-                <Grid.RowDefinitions>
-                    
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    
-                </Grid.RowDefinitions>
+        <VerticalStackLayout x:Name="EquationArea"
+                             Spacing="25">
 
-                <Grid.ColumnDefinitions>
-                    
-                    <ColumnDefinition Width="200" />
-                    
-                </Grid.ColumnDefinitions>
-                
-                <Button Grid.Row="0"
-                        Grid.Column="0"
-                        Text="Addition"
-                        Margin="5"
-                        Clicked="OnMathOptionChosen" />
-                
-                <Button Grid.Row="1"
-                        Grid.Column="0"
-                        Text="Subtraction"
-                        Margin="5"
-                        Clicked="OnMathOptionChosen" />
-                
-                <Button Grid.Row="2"
-                        Grid.Column="0"
-                        Text="Multiplication"
-                        Margin="5"
-                        Clicked="OnMathOptionChosen" />
-                
-                <Button Grid.Row="3"
-                        Grid.Column="0"
-                        Text="Division"
-                        Margin="5"
-                        Clicked="OnMathOptionChosen" />
-                
+            <Grid ColumnDefinitions="*, 0.2*, *"
+                  RowDefinitions="*">
+
+                <Label x:Name="EquationLabel"
+                       FontSize="50"
+                       HorizontalTextAlignment="Center"
+                       VerticalOptions="Center"
+                       HorizontalOptions="End"
+                       Margin="0, 0, 0, 0"
+                       Grid.Column="0" />
+
+                <Label x:Name="EqualSignLabel"
+                       Text="="
+                       FontSize="50"
+                       HorizontalTextAlignment="Center"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"
+                       Grid.Column="1" />
+
+                <Entry x:Name="AnswerEntry"
+                       FontSize="45"
+                       HorizontalOptions="Start"
+                       MinimumWidthRequest="100"
+                       Grid.Column="2" />
+
             </Grid>
+
+            <Button x:Name="SubmitAnswerButton"
+                    Text="Submit"
+                    Clicked="OnAnswerSubmitted"
+                    HorizontalOptions="Center" />
+
+            <Label x:Name="AnswerLabel"
+                   FontSize="28"
+                   IsVisible="false"
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Center"
+ />
+
+            <Button x:Name="NextEquationButton"
+                    Text="Next equation"
+                    Clicked="OnNextEquationChosen"
+                    HorizontalOptions="Center" />
             
         </VerticalStackLayout>
+
+        <Label x:Name="GameOverLabel"
+               IsVisible="false"
+               FontSize="40"
+               Padding="50"
+               VerticalOptions="Center" 
+               HorizontalOptions="Center" />
+
+        <Button x:Name="ReturnButton"
+                Text="Return to main menu"
+                Clicked="OnReturnButtonChosen"
+                IsVisible="false"
+                HorizontalOptions="Center" />
         
-    </ContentView>
+    </VerticalStackLayout>
     
 </ContentPage>

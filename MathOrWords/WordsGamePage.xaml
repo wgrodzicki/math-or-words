@@ -18,6 +18,7 @@
 
             <Entry x:Name="AnswerEntry"
                    FontSize="32"
+                   MinimumWidthRequest="100"
                    HorizontalOptions="Center">
             </Entry>
 
@@ -27,7 +28,7 @@
                     HorizontalOptions="Center" />
 
             <Label x:Name="AnswerLabel"
-                   FontSize="20"
+                   FontSize="28"
                    IsVisible="false"
                    VerticalOptions="Center" 
                    HorizontalOptions="Center" />
