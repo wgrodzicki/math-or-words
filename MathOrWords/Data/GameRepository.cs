@@ -21,19 +21,19 @@ public class GameRepository
 
     public List<Game> GetAllGames()
     {
-        Init();
+        Init(); // Make sure the table gets created when visiting scores for the first time
         return _connection.Table<Game>().ToList();
     }
 
     public void AddGame(Game game)
     {
-        _connection = new SQLiteConnection(_dbPath);
+        Init(); // Make sure the table gets created when adding a game for the first time
         _connection.Insert(game);
     }
 
     public void DeleteGame(int id)
     {
         _connection = new SQLiteConnection(_dbPath);
-        _connection.Delete(new { Id = id });
+        _connection.Delete(new Game { Id = id });
     }
 }

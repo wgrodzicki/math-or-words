@@ -8,7 +8,7 @@
         <VerticalStackLayout Padding="50">
 
             <Grid RowDefinitions="70"
-                  ColumnDefinitions="2*, *, *, *">
+                  ColumnDefinitions="2*, *, *, *, *">
                 
                 <Label Text="Date"
                        FontSize="32"
@@ -35,7 +35,7 @@
                     <DataTemplate>
 
                         <Grid RowDefinitions="35"
-                              ColumnDefinitions="2*, *, *, *">
+                              ColumnDefinitions="2*, *, *, *, *">
 
                             <Label Text="{Binding Date}"
                                    FontSize="24"
@@ -56,7 +56,17 @@
                                    FontSize="24"
                                    HorizontalTextAlignment="Center"
                                    Grid.Column="3" />
-                            
+
+                            <ImageButton Source="bin.png"
+                                         BindingContext="{Binding Id}"
+                                         Clicked="OnDeleteButtonChosen"
+                                         BorderWidth="2"
+                                         BorderColor="DarkSlateBlue"
+                                         CornerRadius="4"
+                                         MaximumWidthRequest="60"
+                                         MinimumHeightRequest="25"
+                                         Grid.Column="4" />
+
                         </Grid>
                         
                     </DataTemplate>

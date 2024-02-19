@@ -61,6 +61,7 @@
 	  <None Remove="Resources\Images\background_blue.png" />
 	  <None Remove="Resources\Images\background_green.png" />
 	  <None Remove="Resources\Images\background_red.png" />
+	  <None Remove="Resources\Images\bin.png" />
 	</ItemGroup>
 
 	<ItemGroup>

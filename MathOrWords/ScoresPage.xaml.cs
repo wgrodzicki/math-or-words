@@ -22,4 +22,11 @@ public partial class ScoresPage : ContentPage
 
         GamesList.ItemsSource = gamesToPrint;
     }
+
+	private void OnDeleteButtonChosen(object sender, EventArgs e)
+	{
+		ImageButton button = (ImageButton)sender;
+		App.GameRepository.DeleteGame(Convert.ToInt32(button.BindingContext));
+		PrintGames();
+	}
 }
