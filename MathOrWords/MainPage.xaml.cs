@@ -4,12 +4,12 @@ namespace MathOrWords
 {
     public partial class MainPage : ContentPage
     {
-        public static List<Game> Games { get; set; }
+        //public static List<Game> Games { get; set; }
 
         public MainPage()
         {
             InitializeComponent();
-            Games = new List<Game>();
+            //Games = new List<Game>();
         }
 
         protected override void OnAppearing()

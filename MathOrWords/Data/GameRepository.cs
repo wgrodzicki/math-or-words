@@ -16,7 +16,7 @@ public class GameRepository
     public void Init()
     {
         _connection = new SQLiteConnection(_dbPath);
-        _connection.CreateTable<Game>(); // Creates a table if it doesn't exist
+        _connection.CreateTable<Game>(); // Creates a table if one doesn't exist
     }
 
     public List<Game> GetAllGames()

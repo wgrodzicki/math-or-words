@@ -1,3 +1,4 @@
+using MathOrWords.Data;
 using MathOrWords.Models;
 using System.Linq;
 
@@ -15,7 +16,7 @@ public partial class ScoresPage : ContentPage
 
 	private void PrintGames()
 	{
-		IEnumerable<Game> gamesToPrint = MainPage.Games.OrderByDescending(x => x.Date);
+		IEnumerable<Game> gamesToPrint = App.GameRepository.GetAllGames().OrderByDescending(x => x.Date);
 
         //gamesToPrint = MainPage.Games.Where(x => x.GameMode == GameMode.Words).OrderByDescending(x => x.Date);
 

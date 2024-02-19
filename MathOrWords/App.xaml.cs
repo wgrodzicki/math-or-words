@@ -1,12 +1,17 @@
-﻿namespace MathOrWords
-{
-    public partial class App : Application
-    {
-        public App()
-        {
-            InitializeComponent();
+﻿using MathOrWords.Data;
 
-            MainPage = new AppShell();
-        }
+namespace MathOrWords;
+
+public partial class App : Application
+{
+    public static GameRepository GameRepository {  get; private set; }
+
+    public App(GameRepository gameRepository)
+    {
+        InitializeComponent();
+
+        MainPage = new AppShell();
+
+        GameRepository = gameRepository;
     }
 }
