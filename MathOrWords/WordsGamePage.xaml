@@ -4,10 +4,22 @@
              x:Class="MathOrWords.WordsGamePage"
              BackgroundImageSource="background_blue.png">
     
-    <VerticalStackLayout Padding="75"
-                         Spacing="25">
+    <VerticalStackLayout Padding="25">
+
+        <Label x:Name="IncorrectCounterLabel"
+               Text="Attempts: 3/3"
+               FontSize="24"
+               VerticalOptions="Center"
+               HorizontalOptions="Start" />
+
+        <Label x:Name="ScoreLabel"
+               Text="Score: 0"
+               FontSize="24"
+               VerticalOptions="Center"
+               HorizontalOptions="Start" />
 
         <VerticalStackLayout x:Name="QuestionArea"
+                             Padding="25"
                              Spacing="25">
 
             <Label x:Name="QuestionLabel"
@@ -43,7 +55,7 @@
         <Label x:Name="GameOverLabel"
                IsVisible="false"
                FontSize="40"
-               Padding="50"
+               Padding="0, 100, 0, 50"
                VerticalOptions="Center" 
                HorizontalOptions="Center" />
 

@@ -1,3 +1,4 @@
+using MathOrWords.Data;
 using MathOrWords.Models;
 using System.Linq;
 
@@ -13,12 +14,30 @@ public partial class ScoresPage : ContentPage
 		PrintGames();
 	}
 
+
+	/// <summary>
+	/// Prints all records stored in the database.
+	/// </summary>
 	private void PrintGames()
 	{
-		IEnumerable<Game> gamesToPrint = MainPage.Games.OrderByDescending(x => x.Date);
-
-        //gamesToPrint = MainPage.Games.Where(x => x.GameMode == GameMode.Words).OrderByDescending(x => x.Date);
+		// Order records by date
+		IEnumerable<Game> gamesToPrint = App.GameRepository.GetAllGames().OrderByDescending(x => x.Date);
 
         GamesList.ItemsSource = gamesToPrint;
     }
+
+
+	/// <summary>
+	/// Handles the deletion of a score.
+	/// </summary>
+	/// <param name="sender"></param>
+	/// <param name="e"></param>
+	private void OnDeleteButtonChosen(object sender, EventArgs e)
+	{
+		ImageButton button = (ImageButton)sender;
+		App.GameRepository.DeleteGame(Convert.ToInt32(button.BindingContext));
+
+		// Refresh scores
+		PrintGames();
+	}
 }

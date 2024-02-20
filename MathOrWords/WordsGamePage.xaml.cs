@@ -6,7 +6,7 @@ public partial class WordsGamePage : ContentPage
 {
     private const int IncorrectAnswersAllowed = 3;
 
-    private readonly string[] wordCategories = [
+    private readonly string[] _wordCategories = [
         "animal",
         "plant",
         "food",
@@ -19,21 +19,21 @@ public partial class WordsGamePage : ContentPage
         "object you see"
     ];
 
-    private readonly string[] constraintCategories = [
+    private readonly string[] _constraintCategories = [
         "contains the letter",
         "does not contain the letter",
         "starts with the letter",
         "ends with the letter"
     ];
 
-    private readonly char[] vowels = ['a', 'e', 'i', 'o', 'u'];
+    private readonly char[] _vowels = ['a', 'e', 'i', 'o', 'u'];
 
-    private int wordCategoryIndex;
-    private int constraintCategoryIndex;
-    private char letter;
+    private int _wordCategoryIndex;
+    private int _constraintCategoryIndex;
+    private char _letter;
 
-    private int score = 0;
-    private int incorrectAnswers = 0;
+    private int _score = 0;
+    private int _incorrectAnswers = 0;
 
 
     public WordsGamePage()
@@ -42,6 +42,8 @@ public partial class WordsGamePage : ContentPage
 		BindingContext = this;
 
         NextQuestionButton.IsEnabled = false;
+        IncorrectCounterLabel.Text = $"Attempts: {IncorrectAnswersAllowed - _incorrectAnswers}/{IncorrectAnswersAllowed}";
+        ScoreLabel.Text = $"Score: {_score}";
         GenerateQuestion();
     }
 
@@ -56,18 +58,18 @@ public partial class WordsGamePage : ContentPage
         Random random = new Random();
 
         // Select random word category (out of 10 defined)
-        wordCategoryIndex = random.Next(0, wordCategories.Length);
+        _wordCategoryIndex = random.Next(0, _wordCategories.Length);
 
         // Select random constraint category (out of 4 defined)
-        constraintCategoryIndex = random.Next(0, constraintCategories.Length);
+        _constraintCategoryIndex = random.Next(0, _constraintCategories.Length);
 
         // Select random uppercase letter (out of the 26 chars in the alphabet, ASCII code 65-90)
         int asciiCode = random.Next(65, 91);
-        letter = Convert.ToChar(asciiCode);
+        _letter = Convert.ToChar(asciiCode);
 
         // Build question
-        string article = vowels.Contains(wordCategories[wordCategoryIndex][0]) ? "An" : "A";
-        questionText = $"{article} {wordCategories[wordCategoryIndex]} that {constraintCategories[constraintCategoryIndex]}: {letter}";
+        string article = _vowels.Contains(_wordCategories[_wordCategoryIndex][0]) ? "An" : "A";
+        questionText = $"{article} {_wordCategories[_wordCategoryIndex]} that {_constraintCategories[_constraintCategoryIndex]}: {_letter}";
 
         QuestionLabel.Text = questionText;
     }
@@ -99,23 +101,25 @@ public partial class WordsGamePage : ContentPage
             if (ValidateAnswer(answer))
             {
                 AnswerLabel.Text = "Correct!";
-                score++;
+                _score++;
+                ScoreLabel.Text = $"Score: {_score}";
                 SubmitAnswerButton.IsVisible = false;
             }
             else
             {
                 AnswerLabel.Text = "Incorrect";
-                incorrectAnswers++;
+                _incorrectAnswers++;
+                IncorrectCounterLabel.Text = $"Attempts: {IncorrectAnswersAllowed - _incorrectAnswers}/{IncorrectAnswersAllowed}";
                 SubmitAnswerButton.IsVisible = false;
             }
 
-            if (incorrectAnswers < IncorrectAnswersAllowed)
+            if (_incorrectAnswers < IncorrectAnswersAllowed)
             {
                 NextQuestionButton.IsEnabled = true;
             }
             else
             {
-                GamePage.GameOver(score, GameMode.Words, QuestionArea, GameOverLabel, ReturnButton);
+                GamePage.GameOver(_score, GameMode.Words, QuestionArea, GameOverLabel, IncorrectCounterLabel, ScoreLabel, ReturnButton, "-");
             }
         }
         else
@@ -132,9 +136,9 @@ public partial class WordsGamePage : ContentPage
     /// <returns></returns>
     private bool ValidateAnswer(string answer)
     {
-        string letterLower = letter.ToString().ToLower();
+        string letterLower = _letter.ToString().ToLower();
 
-        switch (constraintCategoryIndex)
+        switch (_constraintCategoryIndex)
         {
             case 0:
                 return answer.Contains(letterLower) ? true : false;

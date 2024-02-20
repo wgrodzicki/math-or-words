@@ -8,7 +8,13 @@ public partial class MathVariantPage : ContentPage
 		BindingContext = this;
 	}
 
-	private void OnMathOptionChosen(object sender, EventArgs e)
+
+    /// <summary>
+    /// Handles initialization of the math game mode.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void OnMathOptionChosen(object sender, EventArgs e)
 	{
 		Button button = (Button)sender;
 

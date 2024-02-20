@@ -9,21 +9,23 @@ public partial class MathGamePage : ContentPage
 	private const int AdditionSubtractionUpperLimit = 100;
     private const int IncorrectAnswersAllowed = 3;
 
-	private string variant;
-    private int firstOperand = 0;
-	private int secondOperand = 0;
-	private int score = 0;
-	private int incorrectAnswers = 0;
+	private string _variant;
+    private int _firstOperand = 0;
+	private int _secondOperand = 0;
+	private int _score = 0;
+	private int _incorrectAnswers = 0;
 
 	public MathGamePage(string variant)
 	{
 		InitializeComponent();
-		this.variant = variant;
+		_variant = variant;
 
         BindingContext = this;
 		
 		NextEquationButton.IsEnabled = false;
-		GenerateEquation();
+        IncorrectCounterLabel.Text = $"Attempts: {IncorrectAnswersAllowed - _incorrectAnswers}/{IncorrectAnswersAllowed}";
+        ScoreLabel.Text = $"Score: {_score}";
+        GenerateEquation();
 	}
 
 
@@ -32,7 +34,7 @@ public partial class MathGamePage : ContentPage
     /// </summary>
     private void GenerateEquation()
     {
-        string? mathOperator = variant switch // New switch notation
+        string? mathOperator = _variant switch // New switch notation
         {
             "Addition" => "+", // case => value
             "Subtraction" => "-",
@@ -43,27 +45,27 @@ public partial class MathGamePage : ContentPage
 
         Random random = new Random();
 
-        if (variant == "Division")
+        if (_variant == "Division")
         {
             do
             {
-                firstOperand = random.Next(1, DivisionUpperLimit);
-                secondOperand = random.Next(1, DivisionUpperLimit);
-            } while (firstOperand < secondOperand || firstOperand % secondOperand != 0);
+                _firstOperand = random.Next(1, DivisionUpperLimit);
+                _secondOperand = random.Next(1, DivisionUpperLimit);
+            } while (_firstOperand < _secondOperand || _firstOperand % _secondOperand != 0);
         }
-        else if (variant == "Multiplication")
+        else if (_variant == "Multiplication")
 
         {
-            firstOperand = random.Next(1, MultiplicationUpperLimit);
-            secondOperand = random.Next(1, MultiplicationUpperLimit);
+            _firstOperand = random.Next(1, MultiplicationUpperLimit);
+            _secondOperand = random.Next(1, MultiplicationUpperLimit);
         }
         else
         {
-            firstOperand = random.Next(1, AdditionSubtractionUpperLimit);
-            secondOperand = random.Next(1, AdditionSubtractionUpperLimit);
+            _firstOperand = random.Next(1, AdditionSubtractionUpperLimit);
+            _secondOperand = random.Next(1, AdditionSubtractionUpperLimit);
         }
 
-        EquationLabel.Text = $"{firstOperand} {mathOperator} {secondOperand}";
+        EquationLabel.Text = $"{_firstOperand} {mathOperator} {_secondOperand}";
     }
 
 
@@ -87,23 +89,25 @@ public partial class MathGamePage : ContentPage
             if (ValidateAnswer(answer))
 			{
                 AnswerLabel.Text = "Correct!";
-				score++;
-				SubmitAnswerButton.IsVisible = false;
+				_score++;
+                ScoreLabel.Text = $"Score: {_score}";
+                SubmitAnswerButton.IsVisible = false;
             }
 			else
 			{
                 AnswerLabel.Text = "Incorrect";
-				incorrectAnswers++;
+				_incorrectAnswers++;
+                IncorrectCounterLabel.Text = $"Attempts: {IncorrectAnswersAllowed - _incorrectAnswers}/{IncorrectAnswersAllowed}";
                 SubmitAnswerButton.IsVisible = false;
             }
 
-            if (incorrectAnswers < IncorrectAnswersAllowed)
+            if (_incorrectAnswers < IncorrectAnswersAllowed)
             {
                 NextEquationButton.IsEnabled = true;
             }
             else
             {
-				GamePage.GameOver(score, GameMode.Math, EquationArea, GameOverLabel, ReturnButton, variant);
+				GamePage.GameOver(_score, GameMode.Math, EquationArea, GameOverLabel, IncorrectCounterLabel, ScoreLabel, ReturnButton, _variant);
             }
         }
 		else
@@ -120,16 +124,16 @@ public partial class MathGamePage : ContentPage
 	/// <returns></returns>
 	private bool ValidateAnswer(int answer)
 	{
-		switch (variant)
+		switch (_variant)
 		{
 			case "Addition":
-				return firstOperand + secondOperand == answer ? true : false;
+				return _firstOperand + _secondOperand == answer ? true : false;
 			case "Subtraction":
-                return firstOperand - secondOperand == answer ? true : false;
+                return _firstOperand - _secondOperand == answer ? true : false;
 			case "Multiplication":
-                return firstOperand * secondOperand == answer ? true : false;
+                return _firstOperand * _secondOperand == answer ? true : false;
 			case "Division":
-                return firstOperand / secondOperand == answer ? true : false;
+                return _firstOperand / _secondOperand == answer ? true : false;
 			default:
 				return false;
 		}
