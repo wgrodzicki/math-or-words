@@ -115,7 +115,7 @@ public partial class WordsGamePage : ContentPage
             }
             else
             {
-                GamePage.GameOver(_score, GameMode.Words, QuestionArea, GameOverLabel, ReturnButton);
+                GamePage.GameOver(_score, GameMode.Words, QuestionArea, GameOverLabel, ReturnButton, "-");
             }
         }
         else

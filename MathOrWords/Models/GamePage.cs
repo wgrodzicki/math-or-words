@@ -9,14 +9,6 @@ public class GamePage
     {
         await Task.Delay(2000);
 
-        //MainPage.Games.Add(new Models.Game
-        //{
-        //    Score = score,
-        //    Date = DateTime.Now,
-        //    GameMode = mode,
-        //    MathVariant = variant
-        //});
-
         App.GameRepository.AddGame(new Game
         {
             Score = score,

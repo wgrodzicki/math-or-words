@@ -24,7 +24,12 @@
                        FontSize="32"
                        HorizontalTextAlignment="Center"
                        Grid.Column="2" />
-                
+
+                <Label Text="Variant"
+                       FontSize="32"
+                       HorizontalTextAlignment="Center"
+                       Grid.Column="3" />
+
             </Grid>
             
             
@@ -34,7 +39,7 @@
                     
                     <DataTemplate>
 
-                        <Grid RowDefinitions="35"
+                        <Grid RowDefinitions="40"
                               ColumnDefinitions="2*, *, *, *, *">
 
                             <Label Text="{Binding Date}"
@@ -60,11 +65,13 @@
                             <ImageButton Source="bin.png"
                                          BindingContext="{Binding Id}"
                                          Clicked="OnDeleteButtonChosen"
+                                         Aspect="AspectFill"
                                          BorderWidth="2"
                                          BorderColor="DarkSlateBlue"
                                          CornerRadius="4"
                                          MaximumWidthRequest="60"
                                          MinimumHeightRequest="25"
+                                         MaximumHeightRequest="35"
                                          Grid.Column="4" />
 
                         </Grid>

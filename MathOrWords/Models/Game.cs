@@ -2,7 +2,7 @@
 
 namespace MathOrWords.Models;
 
-[Table("Games")] // Name of the table in the DB
+[Table("Games")] // Name of the table in the database
 public class Game
 {
     [PrimaryKey, AutoIncrement, Column("id")]
@@ -16,6 +16,7 @@ public class Game
     [Column("math_variant")]
     public string? MathVariant { get; set; }
 }
+
 
 public enum GameMode
 {
