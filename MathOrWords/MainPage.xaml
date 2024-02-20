@@ -13,7 +13,7 @@
                    FontSize="60"
                    HorizontalOptions="Center" />
 
-            <Grid RowDefinitions="*, 50, *"
+            <Grid RowDefinitions="*, 40, *, *"
                   ColumnDefinitions="*, *, *, *, *, *, *, *, *, *">
 
                 <Button Text="Math"
@@ -40,6 +40,13 @@
                         Grid.Row="2"
                         Grid.Column="4"
                         Grid.ColumnSpan="2" />
+
+                <Label Text="Created by Wojciech Grodzicki"
+                       FontSize="20"
+                       Margin="40"
+                       HorizontalTextAlignment="Center"
+                       Grid.Row="3"
+                       Grid.ColumnSpan="10"/>
 
             </Grid>
             

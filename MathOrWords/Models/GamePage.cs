@@ -5,7 +5,7 @@ public class GamePage
     /// <summary>
     /// Ends the game, saves the score and displays the game over screen.
     /// </summary>
-    public static async void GameOver(int score, GameMode mode, VerticalStackLayout questionArea, Label gameOverLabel, Button returnButton, string variant = "")
+    public static async void GameOver(int score, GameMode mode, VerticalStackLayout questionArea, Label gameOverLabel, Label incorrectCounterLabel, Label scoreLabel, Button returnButton, string variant = "")
     {
         await Task.Delay(2000);
 
@@ -19,6 +19,8 @@ public class GamePage
 
         questionArea.IsVisible = false;
         gameOverLabel.IsVisible = true;
+        incorrectCounterLabel.IsVisible = false;
+        scoreLabel.IsVisible = false;
         gameOverLabel.Text = $"Game over! Your score is: {score}";
         returnButton.IsVisible = true;
     }

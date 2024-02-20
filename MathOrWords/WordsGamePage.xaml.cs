@@ -42,6 +42,8 @@ public partial class WordsGamePage : ContentPage
 		BindingContext = this;
 
         NextQuestionButton.IsEnabled = false;
+        IncorrectCounterLabel.Text = $"Attempts: {IncorrectAnswersAllowed - _incorrectAnswers}/{IncorrectAnswersAllowed}";
+        ScoreLabel.Text = $"Score: {_score}";
         GenerateQuestion();
     }
 
@@ -100,12 +102,14 @@ public partial class WordsGamePage : ContentPage
             {
                 AnswerLabel.Text = "Correct!";
                 _score++;
+                ScoreLabel.Text = $"Score: {_score}";
                 SubmitAnswerButton.IsVisible = false;
             }
             else
             {
                 AnswerLabel.Text = "Incorrect";
                 _incorrectAnswers++;
+                IncorrectCounterLabel.Text = $"Attempts: {IncorrectAnswersAllowed - _incorrectAnswers}/{IncorrectAnswersAllowed}";
                 SubmitAnswerButton.IsVisible = false;
             }
 
@@ -115,7 +119,7 @@ public partial class WordsGamePage : ContentPage
             }
             else
             {
-                GamePage.GameOver(_score, GameMode.Words, QuestionArea, GameOverLabel, ReturnButton, "-");
+                GamePage.GameOver(_score, GameMode.Words, QuestionArea, GameOverLabel, IncorrectCounterLabel, ScoreLabel, ReturnButton, "-");
             }
         }
         else

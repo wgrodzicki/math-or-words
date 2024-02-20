@@ -23,7 +23,9 @@ public partial class MathGamePage : ContentPage
         BindingContext = this;
 		
 		NextEquationButton.IsEnabled = false;
-		GenerateEquation();
+        IncorrectCounterLabel.Text = $"Attempts: {IncorrectAnswersAllowed - _incorrectAnswers}/{IncorrectAnswersAllowed}";
+        ScoreLabel.Text = $"Score: {_score}";
+        GenerateEquation();
 	}
 
 
@@ -88,12 +90,14 @@ public partial class MathGamePage : ContentPage
 			{
                 AnswerLabel.Text = "Correct!";
 				_score++;
-				SubmitAnswerButton.IsVisible = false;
+                ScoreLabel.Text = $"Score: {_score}";
+                SubmitAnswerButton.IsVisible = false;
             }
 			else
 			{
                 AnswerLabel.Text = "Incorrect";
 				_incorrectAnswers++;
+                IncorrectCounterLabel.Text = $"Attempts: {IncorrectAnswersAllowed - _incorrectAnswers}/{IncorrectAnswersAllowed}";
                 SubmitAnswerButton.IsVisible = false;
             }
 
@@ -103,7 +107,7 @@ public partial class MathGamePage : ContentPage
             }
             else
             {
-				GamePage.GameOver(_score, GameMode.Math, EquationArea, GameOverLabel, ReturnButton, _variant);
+				GamePage.GameOver(_score, GameMode.Math, EquationArea, GameOverLabel, IncorrectCounterLabel, ScoreLabel, ReturnButton, _variant);
             }
         }
 		else
