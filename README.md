@@ -2,7 +2,7 @@
 
 This is "Math or Words", my first project made with .NET MAUI. It's a desktop application for Windows that let's you play a game to test your skills with either math or words.
 
-![Menu sample](Resources/Images/main_menu.PNG)
+![Menu sample](MathOrWords/Resources/Images/main_menu.PNG)
 
 ## **Technical side of things**
 
@@ -12,11 +12,11 @@ The application is written with C# and XAML, using the .NET MAUI framework and S
 
 - math mode which consists in solving randomly generated equations (addition, subtraction, multiplication, division)
 
-![Math sample](Resources/Images/math_game.PNG)
+![Math sample](MathOrWords/Resources/Images/math_game.PNG)
 
 - words mode which consists in forming words within the given constraints (inclusion/exclusion of letters, specific letter at the beginning/at the end of the word)
 
-![Words sample](Resources/Images/words_game.PNG)
+![Words sample](MathOrWords/Resources/Images/words_game.PNG)
 
 - score and attempts counter
 - score saving and browsing
