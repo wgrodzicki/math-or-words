@@ -10,13 +10,19 @@ The application is written with C# and XAML, using the .NET MAUI framework and S
 
 ## **Features**
 
-- math mode which consists in solving randomly generated equations (addition, subtraction, multiplication, division)
+#### Math mode
+
+Math mode consists in solving randomly generated equations (addition, subtraction, multiplication, division).
 
 ![Math sample](MathOrWords/Resources/Images/math_game.PNG)
 
-- words mode which consists in forming words within the given constraints (inclusion/exclusion of letters, specific letter at the beginning/at the end of the word)
+#### Math mode
+
+Words mode consists in forming words within the given constraints (inclusion/exclusion of letters, specific letter at the beginning/at the end of the word).
 
 ![Words sample](MathOrWords/Resources/Images/words_game.PNG)
+
+In addition I also implemented:
 
 - score and attempts counter
 - score saving and browsing
