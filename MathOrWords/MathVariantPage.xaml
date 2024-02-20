@@ -9,7 +9,7 @@
         <VerticalStackLayout Spacing="25"
                              Padding="100">
             
-            <Label Text="Choose operation:"
+            <Label Text="Choose operation"
                    FontSize="40"
                    VerticalOptions="Center" 
                    HorizontalOptions="Center" />

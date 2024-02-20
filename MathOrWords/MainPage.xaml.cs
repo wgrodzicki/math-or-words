@@ -49,5 +49,16 @@ namespace MathOrWords
         {
             Navigation.PushAsync(new ScoresPage());
         }
+
+
+        /// <summary>
+        /// Displays credits.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnCreditsChosen(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new CreditsPage());
+        }
     }
 }
