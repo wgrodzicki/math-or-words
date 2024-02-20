@@ -22,6 +22,7 @@
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
 
                 </Grid.RowDefinitions>
 
@@ -39,6 +40,13 @@
                        Grid.Column="0" />
 
                 <Label Text="Fredoka font by Milena Brandão, Hafontia via Google Fonts"
+                       FontSize="18"
+                       Margin="5"
+                       HorizontalTextAlignment="Center"
+                       Grid.Row="1"
+                       Grid.Column="0" />
+
+                <Label Text="Indie Flower font by Kimberly Geswein via Google Fonts"
                        FontSize="18"
                        Margin="5"
                        HorizontalTextAlignment="Center"

@@ -62,6 +62,9 @@
 	  <None Remove="Resources\Images\background_green.png" />
 	  <None Remove="Resources\Images\background_red.png" />
 	  <None Remove="Resources\Images\bin.png" />
+	  <None Remove="Resources\Images\main_menu.PNG" />
+	  <None Remove="Resources\Images\math_game.PNG" />
+	  <None Remove="Resources\Images\words_game.PNG" />
 	</ItemGroup>
 
 	<ItemGroup>
