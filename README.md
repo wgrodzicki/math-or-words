@@ -1,6 +1,6 @@
 # **Math or Words**
 
-This is "Math or Words", my first project made with .NET MAUI. It's a desktop application for Windows that let's you play a game to test your skills with either math or words.
+This is "Math or Words", my first project made with .NET MAUI. It's a desktop application for Windows that lets you play a game to test your skills with either math or words. You can download it [here](https://drive.google.com/file/d/1tKLH5vTJZXtuIFUTSzsHg56Wl3i8v9a3/view?usp=sharing).
 
 ![Menu sample](MathOrWords/Resources/Images/main_menu.PNG)
 
@@ -28,17 +28,21 @@ In addition I also implemented:
 - score saving and browsing
 - option to delete selected scores
 
+## **How to play?**
+
+Choose game mode (math or words) and game variant (in the case of math). Then try to solve the given equation (math) or find a word that matches the given constraints (words). You have 3 attempts each time you start a new game. Head to the scores page in order to browse your previous scores.
+
 ## **Main challenges**
 
 When designing and implementing the project I stumbled upon several challenges:
 
-- _MAUI framework_. It was my first encounter with the .NET MAUI framework and XAML, so it took me a while to get a grasp of the project structure and how the pages work within the code-behind pattern.
+- _MAUI framework_. It was my first encounter with the .NET MAUI framework and XAML, so it took me a while to get a grasp of the project structure and how the pages work with the code-behind pattern.
 
-- _Database_. Previously I dealt mostly with raw SQL, so carrying out queries purely with C# and mapping a table to a class was something new to me. I also struggled a bit with finding a proper way to indicate the target folder to store the database through code.
+- _Database_. Previously I dealt mostly with raw SQL, so carrying out queries purely with C# and mapping a table to a class was something new to me. I also struggled a bit with finding a proper way to indicate the target folder to store the database.
 
 - _Timed events_. I wanted to implement a slight "suspension" when the game was over and first thought of a simple timer. But then I found out about async methods and tasks, so I finally opted for a Delay() method without stopping the whole app, which was a good solution to the problem.
 
-- _App deployment_. I had previous experience with WPF desktop apps, which were built and deployed straightaway through Visual Studio. In MAUI, however, it didn't work this way and I had to manually disable default packaging to be able to deploy and run the final app on my machine.
+- _App deployment_. I have some previous experience with WPF, which allows to build and deploy straightaway from Visual Studio. In MAUI, however, it didn't work this way and I had to manually disable default packaging to be able to deploy and run the final app on my machine without any additional actions.
 
 ## **Credits**
 
