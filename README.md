@@ -16,7 +16,7 @@ Math mode consists in solving randomly generated equations (addition, subtractio
 
 ![Math sample](MathOrWords/Resources/Images/math_game.PNG)
 
-#### Math mode
+#### Words mode
 
 Words mode consists in forming words within the given constraints (inclusion/exclusion of letters, specific letter at the beginning/at the end of the word).
 
