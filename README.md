@@ -46,6 +46,8 @@ When designing and implementing the project I stumbled upon several challenges:
 
 ## **Credits**
 
+Created by Wojciech Grodzicki.
+
 - Basic code structure and techniques by [The C# Academy](https://www.youtube.com/watch?v=o81wpRuOGjE&list=PL4G0MUH8YWiAMypwveH2LlLK_o8Jto9CE)
 - Fredoka font by Milena Brandão, Hafontia via [Google Fonts](https://fonts.google.com/specimen/Fredoka)
 - Indie Flower font by Kimberly Geswein via [Google Fonts](https://fonts.google.com/specimen/Indie+Flower)
