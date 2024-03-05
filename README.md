@@ -1,6 +1,6 @@
 # **Math or Words**
 
-This is "Math or Words", my first project made with .NET MAUI. It's a desktop application for Windows that lets you play a game to test your skills with either math or words. You can download a sideloading version of the app (Windows build) [here](https://www.dropbox.com/scl/fi/3dmzwkfyvr2hs61xv1fnb/MathOrWords.7z?rlkey=xd9dsswset53n9w62epk4ka94&dl=0).
+This is "Math or Words", my first project made with .NET MAUI. It's a desktop application for Windows that lets you play a game to test your skills with either math or words. You can download a sideloading version of the app (Windows build) [here](https://www.dropbox.com/scl/fi/rlsbblq3fbm6yarstvld5/MathOrWords.7z?rlkey=0k65tc2pv8mvzggywx64ecpyc&dl=0).
 
 ![Menu sample](MathOrWords/Resources/Images/main_menu.PNG)
 
@@ -42,7 +42,7 @@ When designing and implementing the project I stumbled upon several challenges:
 
 - _Timed events_. I wanted to implement a slight "suspension" when the game was over and first thought of a simple timer. But then I found out about async methods and tasks, so I finally opted for a Delay() method without stopping the whole app, which was a good solution to the problem.
 
-- _App deployment_. I have some previous experience with WPF, which allows to build and deploy straightaway from Visual Studio. In MAUI, however, it didn't work this way and I had to manually disable default packaging to be able to deploy and run the final app on my machine without any additional actions.
+- _App deployment_. I have some previous experience with WinForms, which allows to build and deploy straightaway from Visual Studio. In MAUI, however, it didn't work this way and I had to manually disable default packaging to be able to deploy and run the final app on my machine without any additional actions.
 
 ## **Credits**
 
