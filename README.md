@@ -1,6 +1,6 @@
 # **Math or Words**
 
-This is "Math or Words", my first project made with .NET MAUI. It's a desktop application for Windows that lets you play a game to test your skills with either math or words. You can download it [here](https://drive.google.com/file/d/1tKLH5vTJZXtuIFUTSzsHg56Wl3i8v9a3/view?usp=sharing).
+This is "Math or Words", my first project made with .NET MAUI. It's a desktop application for Windows that lets you play a game to test your skills with either math or words. You can download a sideloading version of the app (Windows build) [here](https://www.dropbox.com/scl/fi/lpor306bu64rqtbym87j9/MathOrWords.7z?rlkey=n0jwjmqltppod5t2p7yam0dn7&dl=0).
 
 ![Menu sample](MathOrWords/Resources/Images/main_menu.PNG)
 

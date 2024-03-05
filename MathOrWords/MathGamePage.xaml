@@ -58,8 +58,7 @@
                    FontSize="28"
                    IsVisible="false"
                    VerticalOptions="Center" 
-                   HorizontalOptions="Center"
- />
+                   HorizontalOptions="Center" />
 
             <Button x:Name="NextEquationButton"
                     Text="Next equation"
