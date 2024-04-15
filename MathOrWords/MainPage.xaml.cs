@@ -1,4 +1,4 @@
-﻿using MathOrWords.Models;
+﻿using MathOrWords.Controllers;
 
 namespace MathOrWords
 {
@@ -36,7 +36,23 @@ namespace MathOrWords
         /// <param name="e"></param>
         private void OnWordsGameChosen(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new WordsGamePage());
+            if (Connectivity.Current.NetworkAccess != NetworkAccess.None)
+            {
+                try
+                {
+					WiktionaryController.GetWikiData("FuckingIdiotMAAn");
+				}
+                catch (Exception ex)
+                {
+					Navigation.PushAsync(new WordsGamePage());
+				}
+				
+
+			}
+				//Navigation.PushAsync(new WordsGamePage());
+            //else
+            //    //Navigation.PopAsync();
+            
         }
 
 
