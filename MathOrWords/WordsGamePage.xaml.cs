@@ -1,3 +1,4 @@
+using MathOrWords.Controllers;
 using MathOrWords.Models;
 
 namespace MathOrWords;
@@ -80,7 +81,7 @@ public partial class WordsGamePage : ContentPage
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void OnAnswerSubmitted(object sender, EventArgs e)
+    private async void OnAnswerSubmitted(object sender, EventArgs e)
 	{
         string answer = AnswerEntry.Text;
         AnswerLabel.IsVisible = true;
@@ -98,7 +99,15 @@ public partial class WordsGamePage : ContentPage
             answer = answer.Trim().ToLower();
             AnswerEntry.IsEnabled = false;
 
-            if (ValidateAnswer(answer))
+            //!!
+            Task<bool> validationTask = ValidateAnswer(answer);
+            bool result = await validationTask;
+            //!!
+
+            //!!
+            //if (ValidateAnswer(answer))
+            if (result)
+            //!!
             {
                 AnswerLabel.Text = "Correct!";
                 _score++;
@@ -134,24 +143,65 @@ public partial class WordsGamePage : ContentPage
     /// </summary>
     /// <param name="answer"></param>
     /// <returns></returns>
-    private bool ValidateAnswer(string answer)
+    private async Task<bool> ValidateAnswer(string answer)
     {
-        string letterLower = _letter.ToString().ToLower();
+        //!!
+        if (!CheckConstraint(answer))
+            return false;
 
-        switch (_constraintCategoryIndex)
-        {
-            case 0:
-                return answer.Contains(letterLower) ? true : false;
-            case 1:
-                return answer.Contains(letterLower) ? false : true;
-            case 2:
-                return answer.StartsWith(letterLower) ? true : false;
-            case 3:
-                return answer.EndsWith(letterLower) ? true : false;
-            default:
-                return false;
-        }
+		Task<bool> wikiCheckTask = WiktionaryController.GetWikiData(answer);
+        bool result = await wikiCheckTask;
+
+        return result == true ? true : false;
+        
+        //!!
+        //string letterLower = _letter.ToString().ToLower();
+
+        //switch (_constraintCategoryIndex)
+        //{
+        //    case 0:
+        //        return answer.Contains(letterLower) ? true : false;
+        //    case 1:
+        //        return answer.Contains(letterLower) ? false : true;
+        //    case 2:
+        //        return answer.StartsWith(letterLower) ? true : false;
+        //    case 3:
+        //        return answer.EndsWith(letterLower) ? true : false;
+        //    default:
+        //        return false;
+        //}
     }
+
+    //!!
+    private bool CheckConstraint(string answer)
+    {
+		string letterLower = _letter.ToString().ToLower();
+
+		switch (_constraintCategoryIndex)
+		{
+			case 0:
+				return answer.Contains(letterLower) ? true : false;
+			case 1:
+				return answer.Contains(letterLower) ? false : true;
+			case 2:
+				return answer.StartsWith(letterLower) ? true : false;
+			case 3:
+				return answer.EndsWith(letterLower) ? true : false;
+			default:
+				return false;
+		}
+	}
+
+ //   private bool CheckMeaning(string answer)
+ //   {
+ //       Task task = WiktionaryController.GetWikiData(answer);
+
+ //       if (task.Is)
+ //           return false;
+ //       else
+ //           return true;
+	//}
+    //!!
 
 
     /// <summary>

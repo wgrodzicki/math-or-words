@@ -1,19 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
-using MathOrWords.Models;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace MathOrWords.Controllers;
 
 internal static class WiktionaryController
 {
-	public static async void GetWikiData(string playerAnswer)
+	public static async Task<bool> GetWikiData(string playerAnswer)
 	{
-		string url = $"https://en.wikipedia.org/w/api.php?action=opensearch&search={playerAnswer}&limit=1&namespace=0&format=json";
+		string url = $"https://en.wikipedia.org/w/api.php?action=opensearch&search={playerAnswer}&limit=10&namespace=0&format=json";
 		HttpClient client = new HttpClient();
 		HttpRequestMessage message = new HttpRequestMessage(HttpMethod.Get, url);
 
@@ -23,6 +16,15 @@ internal static class WiktionaryController
 
 		var deserializedContent = JsonConvert.DeserializeObject<dynamic>(responseContent);
 		string results = deserializedContent[1].ToString();
-		char resultContent = results[2]; // Has to be handled!
+
+		try
+		{
+			char resultContent = results[2]; // Has to be handled!
+		}
+		catch (Exception ex)
+		{
+			return false;
+		}
+		return true;
 	}
 }
