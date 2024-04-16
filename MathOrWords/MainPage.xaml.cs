@@ -36,6 +36,7 @@ namespace MathOrWords
         /// <param name="e"></param>
         private void OnWordsGameChosen(object sender, EventArgs e)
         {
+            // Make sure there is internet connection
             if (Connectivity.Current.NetworkAccess != NetworkAccess.None)
 				Navigation.PushAsync(new WordsGamePage());
             else
