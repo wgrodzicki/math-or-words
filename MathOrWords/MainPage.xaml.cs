@@ -37,22 +37,9 @@ namespace MathOrWords
         private void OnWordsGameChosen(object sender, EventArgs e)
         {
             if (Connectivity.Current.NetworkAccess != NetworkAccess.None)
-            {
-                try
-                {
-					WiktionaryController.GetWikiData("FuckingIdiotMAAn");
-				}
-                catch (Exception ex)
-                {
-					Navigation.PushAsync(new WordsGamePage());
-				}
-				
-
-			}
-				//Navigation.PushAsync(new WordsGamePage());
-            //else
-            //    //Navigation.PopAsync();
-            
+				Navigation.PushAsync(new WordsGamePage());
+            else
+				DisplayAlert("No internet connection", "The Words game is inaccessible without internet connection.", "OK");
         }
 
 
