@@ -85,12 +85,14 @@ public partial class WordsGamePage : ContentPage
 	{
         string answer = AnswerEntry.Text;
         AnswerLabel.IsVisible = true;
+		SubmitAnswerButton.IsVisible = false;
 
-        // Initial verification if the answer is exists
-        if (String.IsNullOrWhiteSpace(answer))
+		// Initial verification if the answer is exists
+		if (String.IsNullOrWhiteSpace(answer))
         {
             AnswerLabel.Text = "Invalid answer";
-            return;
+			SubmitAnswerButton.IsVisible = true;
+			return;
         }
 
         // Initial verification if the answer is alphanumerical
@@ -98,16 +100,12 @@ public partial class WordsGamePage : ContentPage
         {
             answer = answer.Trim().ToLower();
             AnswerEntry.IsEnabled = false;
+            AnswerLabel.Text = "Checking answer...";
 
-            //!!
             Task<bool> validationTask = ValidateAnswer(answer);
-            bool result = await validationTask;
-            //!!
+            bool answerValid = await validationTask;
 
-            //!!
-            //if (ValidateAnswer(answer))
-            if (result)
-            //!!
+            if (answerValid)
             {
                 AnswerLabel.Text = "Correct!";
                 _score++;
@@ -134,45 +132,34 @@ public partial class WordsGamePage : ContentPage
         else
         {
             AnswerLabel.Text = "Invalid answer";
-        }
+			SubmitAnswerButton.IsVisible = true;
+		}
     }
 
 
-    /// <summary>
-    /// Validates player answer depending on the current constraint.
-    /// </summary>
-    /// <param name="answer"></param>
-    /// <returns></returns>
-    private async Task<bool> ValidateAnswer(string answer)
+	/// <summary>
+	/// Validates player answer against the current constraint and the Wiktionary.
+	/// </summary>
+	/// <param name="answer"></param>
+	/// <returns></returns>
+	private async Task<bool> ValidateAnswer(string answer)
     {
-        //!!
         if (!CheckConstraint(answer))
             return false;
 
+        // Call the Wiktionary API to check if the answer is a valid word
 		Task<bool> wikiCheckTask = WiktionaryController.GetWikiData(answer);
         bool result = await wikiCheckTask;
 
         return result == true ? true : false;
-        
-        //!!
-        //string letterLower = _letter.ToString().ToLower();
-
-        //switch (_constraintCategoryIndex)
-        //{
-        //    case 0:
-        //        return answer.Contains(letterLower) ? true : false;
-        //    case 1:
-        //        return answer.Contains(letterLower) ? false : true;
-        //    case 2:
-        //        return answer.StartsWith(letterLower) ? true : false;
-        //    case 3:
-        //        return answer.EndsWith(letterLower) ? true : false;
-        //    default:
-        //        return false;
-        //}
     }
 
-    //!!
+
+    /// <summary>
+    /// Checks if player answer meets the constraint criteria.
+    /// </summary>
+    /// <param name="answer"></param>
+    /// <returns></returns>
     private bool CheckConstraint(string answer)
     {
 		string letterLower = _letter.ToString().ToLower();
@@ -191,17 +178,6 @@ public partial class WordsGamePage : ContentPage
 				return false;
 		}
 	}
-
- //   private bool CheckMeaning(string answer)
- //   {
- //       Task task = WiktionaryController.GetWikiData(answer);
-
- //       if (task.Is)
- //           return false;
- //       else
- //           return true;
-	//}
-    //!!
 
 
     /// <summary>
