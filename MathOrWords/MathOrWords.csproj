@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net8.0-windows10.0.19041.0</TargetFrameworks>
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net8.0-windows10.0.19041.0;net8.0</TargetFrameworks>
 		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
 		<!-- <TargetFrameworks>$(TargetFrameworks);net8.0-tizen</TargetFrameworks> -->
 
@@ -12,7 +12,7 @@
 		either BOTH runtimes must be indicated or ONLY macatalyst-x64. -->
 		<!-- For example: <RuntimeIdentifiers>maccatalyst-x64;maccatalyst-arm64</RuntimeIdentifiers> -->
 	
-		<OutputType>Exe</OutputType>
+		<OutputType Condition="'$(TargetFramework)' != 'net8.0'">Exe</OutputType>
 		<RootNamespace>MathOrWords</RootNamespace>
 		<UseMaui>true</UseMaui>
 		<SingleProject>true</SingleProject>
@@ -76,31 +76,31 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="MathVariantPage.xaml.cs">
+	  <Compile Update="Pages\MathVariantPage.xaml.cs">
 	    <DependentUpon>MathVariantPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="MathGamePage.xaml.cs">
+	  <Compile Update="Pages\MathGamePage.xaml.cs">
 	    <DependentUpon>MathGamePage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="ScoresPage.xaml.cs">
+	  <Compile Update="Pages\ScoresPage.xaml.cs">
 	    <DependentUpon>ScoresPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="CreditsPage.xaml">
+	  <MauiXaml Update="Pages\CreditsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="MathVariantPage.xaml">
+	  <MauiXaml Update="Pages\MathVariantPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="MathGamePage.xaml">
+	  <MauiXaml Update="Pages\MathGamePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="ScoresPage.xaml">
+	  <MauiXaml Update="Pages\ScoresPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="WordsGamePage.xaml">
+	  <MauiXaml Update="Pages\WordsGamePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
