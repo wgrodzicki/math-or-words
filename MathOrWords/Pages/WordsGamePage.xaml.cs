@@ -144,7 +144,7 @@ public partial class WordsGamePage : ContentPage
 	/// <returns></returns>
 	private async Task<bool> ValidateAnswer(string answer)
     {
-        if (!CheckConstraint(answer))
+        if (!CheckConstraint(answer, _letter, _constraintCategoryIndex))
             return false;
 
         // Call the Wiktionary API to check if the answer is a valid word
@@ -155,16 +155,22 @@ public partial class WordsGamePage : ContentPage
     }
 
 
-    /// <summary>
-    /// Checks if player answer meets the constraint criteria.
-    /// </summary>
-    /// <param name="answer"></param>
-    /// <returns></returns>
-    private bool CheckConstraint(string answer)
+	/// <summary>
+	/// Checks if player answer meets the constraint criteria. The constraints are the following:
+    /// 0 - contains the given letter;
+    /// 1 - does not contain the given letter;
+    /// 2 - starts with the given letter;
+    /// 3 - ends with the given letter.
+	/// </summary>
+	/// <param name="answer"></param>
+	/// <param name="letter"></param>
+	/// <param name="constraintIndex"></param>
+	/// <returns></returns>
+	public bool CheckConstraint(string answer, char letter, int constraintIndex)
     {
-		string letterLower = _letter.ToString().ToLower();
+		string letterLower = letter.ToString().ToLower();
 
-		switch (_constraintCategoryIndex)
+		switch (constraintIndex)
 		{
 			case 0:
 				return answer.Contains(letterLower) ? true : false;
