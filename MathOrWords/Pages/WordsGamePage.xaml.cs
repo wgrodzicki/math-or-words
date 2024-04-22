@@ -38,9 +38,9 @@ public partial class WordsGamePage : ContentPage
 
 
     public WordsGamePage()
-	{
-		InitializeComponent();
-		BindingContext = this;
+    {
+        InitializeComponent();
+        BindingContext = this;
 
         NextQuestionButton.IsEnabled = false;
         IncorrectCounterLabel.Text = $"Attempts: {IncorrectAnswersAllowed - _incorrectAnswers}/{IncorrectAnswersAllowed}";
@@ -82,17 +82,17 @@ public partial class WordsGamePage : ContentPage
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private async void OnAnswerSubmitted(object sender, EventArgs e)
-	{
+    {
         string answer = AnswerEntry.Text;
         AnswerLabel.IsVisible = true;
-		SubmitAnswerButton.IsVisible = false;
+        SubmitAnswerButton.IsVisible = false;
 
-		// Initial verification if the answer is exists
-		if (String.IsNullOrWhiteSpace(answer))
+        // Initial verification if the answer is exists
+        if (String.IsNullOrWhiteSpace(answer))
         {
             AnswerLabel.Text = "Invalid answer";
-			SubmitAnswerButton.IsVisible = true;
-			return;
+            SubmitAnswerButton.IsVisible = true;
+            return;
         }
 
         // Initial verification if the answer is alphanumerical
@@ -132,58 +132,58 @@ public partial class WordsGamePage : ContentPage
         else
         {
             AnswerLabel.Text = "Invalid answer";
-			SubmitAnswerButton.IsVisible = true;
-		}
+            SubmitAnswerButton.IsVisible = true;
+        }
     }
 
 
-	/// <summary>
-	/// Validates player answer against the current constraint and the Wiktionary.
-	/// </summary>
-	/// <param name="answer"></param>
-	/// <returns></returns>
-	private async Task<bool> ValidateAnswer(string answer)
+    /// <summary>
+    /// Validates player answer against the current constraint and the Wiktionary.
+    /// </summary>
+    /// <param name="answer"></param>
+    /// <returns></returns>
+    private async Task<bool> ValidateAnswer(string answer)
     {
         if (!CheckConstraint(answer, _letter, _constraintCategoryIndex))
             return false;
 
         // Call the Wiktionary API to check if the answer is a valid word
-		Task<bool> wikiCheckTask = WiktionaryController.GetWikiData(answer);
+        Task<bool> wikiCheckTask = WiktionaryController.GetWikiData(answer);
         bool result = await wikiCheckTask;
 
         return result == true ? true : false;
     }
 
 
-	/// <summary>
-	/// Checks if player answer meets the constraint criteria. The constraints are the following:
+    /// <summary>
+    /// Checks if player answer meets the constraint criteria. The constraints are the following:
     /// 0 - contains the given letter;
     /// 1 - does not contain the given letter;
     /// 2 - starts with the given letter;
     /// 3 - ends with the given letter.
-	/// </summary>
-	/// <param name="answer"></param>
-	/// <param name="letter"></param>
-	/// <param name="constraintIndex"></param>
-	/// <returns></returns>
-	public bool CheckConstraint(string answer, char letter, int constraintIndex)
+    /// </summary>
+    /// <param name="answer"></param>
+    /// <param name="letter"></param>
+    /// <param name="constraintIndex"></param>
+    /// <returns></returns>
+    public bool CheckConstraint(string answer, char letter, int constraintIndex)
     {
-		string letterLower = letter.ToString().ToLower();
+        string letterLower = letter.ToString().ToLower();
 
-		switch (constraintIndex)
-		{
-			case 0:
-				return answer.Contains(letterLower) ? true : false;
-			case 1:
-				return answer.Contains(letterLower) ? false : true;
-			case 2:
-				return answer.StartsWith(letterLower) ? true : false;
-			case 3:
-				return answer.EndsWith(letterLower) ? true : false;
-			default:
-				return false;
-		}
-	}
+        switch (constraintIndex)
+        {
+            case 0:
+                return answer.Contains(letterLower) ? true : false;
+            case 1:
+                return answer.Contains(letterLower) ? false : true;
+            case 2:
+                return answer.StartsWith(letterLower) ? true : false;
+            case 3:
+                return answer.EndsWith(letterLower) ? true : false;
+            default:
+                return false;
+        }
+    }
 
 
     /// <summary>
@@ -192,7 +192,7 @@ public partial class WordsGamePage : ContentPage
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void OnNextQuestionChosen(object sender, EventArgs e)
-	{
+    {
         AnswerEntry.IsEnabled = true;
         AnswerEntry.Text = "";
 
@@ -212,7 +212,7 @@ public partial class WordsGamePage : ContentPage
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void OnReturnButtonChosen(object sender, EventArgs e)
-	{
-		GamePage.ReturnToMainPage();
-	}
+    {
+        GamePage.ReturnToMainPage();
+    }
 }

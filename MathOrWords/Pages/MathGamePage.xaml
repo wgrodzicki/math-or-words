@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MathOrWords.MathGamePage"
              BackgroundImageSource="background_blue.png">
-    
+
     <VerticalStackLayout Padding="25">
 
         <Label x:Name="IncorrectCounterLabel"
@@ -11,7 +11,7 @@
                FontSize="24"
                VerticalOptions="Center"
                HorizontalOptions="Start" />
-        
+
         <Label x:Name="ScoreLabel"
                Text="Score: 0"
                FontSize="24"
@@ -64,7 +64,7 @@
                     Text="Next equation"
                     Clicked="OnNextEquationChosen"
                     HorizontalOptions="Center" />
-            
+
         </VerticalStackLayout>
 
         <Label x:Name="GameOverLabel"
@@ -79,7 +79,7 @@
                 Clicked="OnReturnButtonChosen"
                 IsVisible="false"
                 HorizontalOptions="Center" />
-        
+
     </VerticalStackLayout>
-    
+
 </ContentPage>

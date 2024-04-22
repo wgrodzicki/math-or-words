@@ -4,19 +4,51 @@ namespace UnitTestMathOrWords;
 
 public class UnitTestWordsGame
 {
-	[Fact]
-	public void TestCheckConstraint()
-	{
-		WordsGamePage page = new WordsGamePage();
+    [Fact]
+    public void CheckConstraint_ContainsLetter_ReturnsTrue()
+    {
+        WordsGamePage page = new WordsGamePage();
+        char letter = 'A';
+        string answer = "Math";
+        answer = answer.ToLower();
 
-		char letter = 'A';
-		string[] answers = { "Math", "Nothing", "Armor", "Schema" };
+        bool answerValid = page.CheckConstraint(answer, letter, 0);
+        Assert.True(answerValid);
+    }
 
-		for (int i = 0; i < answers.Length; i++)
-		{
-			string answer = answers[i].ToLower();
-			bool answerValid = page.CheckConstraint(answer, letter, i);
-			Assert.True(answerValid);
-		}	
-	}
+    [Fact]
+    public void CheckConstraint_NoLetter_ReturnsTrue()
+    {
+        WordsGamePage page = new WordsGamePage();
+        char letter = 'A';
+        string answer = "Something";
+        answer = answer.ToLower();
+
+        bool answerValid = page.CheckConstraint(answer, letter, 1);
+        Assert.True(answerValid);
+    }
+
+    [Fact]
+    public void CheckConstraint_StartingLetter_ReturnsTrue()
+    {
+        WordsGamePage page = new WordsGamePage();
+        char letter = 'A';
+        string answer = "Alphabet";
+        answer = answer.ToLower();
+
+        bool answerValid = page.CheckConstraint(answer, letter, 2);
+        Assert.True(answerValid);
+    }
+
+    [Fact]
+    public void CheckConstraint_EndingLetter_ReturnsTrue()
+    {
+        WordsGamePage page = new WordsGamePage();
+        char letter = 'A';
+        string answer = "Pizza";
+        answer = answer.ToLower();
+
+        bool answerValid = page.CheckConstraint(answer, letter, 3);
+        Assert.True(answerValid);
+    }
 }

@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MathOrWords.CreditsPage"
              BackgroundImageSource="background_blue.png">
-    
+
     <ContentView>
 
         <VerticalStackLayout Spacing="25"
@@ -70,7 +70,7 @@
             </Grid>
 
         </VerticalStackLayout>
-        
+
     </ContentView>
-    
+
 </ContentPage>

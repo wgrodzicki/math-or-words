@@ -23,7 +23,7 @@
                         Grid.Row="0"
                         Grid.Column="2"
                         Grid.ColumnSpan="1" />
-                
+
                 <Button Text="Words"
                         Clicked="OnWordsGameChosen"
                         Margin="5"
@@ -56,9 +56,9 @@
                        Grid.ColumnSpan="5"/>
 
             </Grid>
-            
+
         </VerticalStackLayout>
-        
+
     </ContentView>
-    
+
 </ContentPage>
