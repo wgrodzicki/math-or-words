@@ -4,7 +4,7 @@ namespace MathOrWords;
 
 public partial class App : Application
 {
-    public static GameRepository GameRepository {  get; private set; }
+    public static GameRepository GameRepository { get; private set; }
 
     public App(GameRepository gameRepository)
     {

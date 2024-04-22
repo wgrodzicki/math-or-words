@@ -38,10 +38,10 @@ namespace MathOrWords
         {
             // Make sure there is internet connection
             if (Connectivity.Current.NetworkAccess == NetworkAccess.None || Connectivity.Current.NetworkAccess == NetworkAccess.Unknown)
-				DisplayAlert("No internet connection", "The Words game is inaccessible without internet connection.", "OK");
-			else
-			    Navigation.PushAsync(new WordsGamePage());
-			
+                DisplayAlert("No internet connection", "The Words game is inaccessible without internet connection.", "OK");
+            else
+                Navigation.PushAsync(new WordsGamePage());
+
         }
 
 

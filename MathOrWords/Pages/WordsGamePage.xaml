@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MathOrWords.WordsGamePage"
              BackgroundImageSource="background_blue.png">
-    
+
     <VerticalStackLayout Padding="25">
 
         <Label x:Name="IncorrectCounterLabel"
@@ -66,5 +66,5 @@
                 HorizontalOptions="Center" />
 
     </VerticalStackLayout>
-    
+
 </ContentPage>
