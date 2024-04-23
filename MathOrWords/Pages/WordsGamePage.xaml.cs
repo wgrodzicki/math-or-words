@@ -1,5 +1,6 @@
 using MathOrWords.Controllers;
 using MathOrWords.Models;
+using static MathOrWords.Helpers.Helpers;
 
 namespace MathOrWords;
 
@@ -7,17 +8,116 @@ public partial class WordsGamePage : ContentPage
 {
     private const int IncorrectAnswersAllowed = 3;
 
-    private readonly string[] _wordCategories = [
-        "animal",
-        "plant",
-        "food",
-        "name",
-        "profession",
-        "country",
-        "city",
-        "vehicle",
-        "tool",
-        "object you see"
+    //private readonly string[] _wordCategories = [
+    //    "animal",
+    //    "plant",
+    //    "food",
+    //    "name",
+    //    "profession",
+    //    "country",
+    //    "city",
+    //    "vehicle",
+    //    "tool",
+    //];
+
+    private readonly WordCategory[] _wordCategories = [
+        new WordCategory
+        {
+            Category = "animal",
+            HelperCategories = [
+                "fauna",
+                "creature",
+                "beast",
+                "critter",
+                "species"
+            ]
+        },
+        new WordCategory
+        {
+            Category = "plant",
+            HelperCategories = [
+                "flora",
+                "vegetation",
+                "cultivate"
+            ]
+        },
+        new WordCategory
+        {
+            Category = "food",
+            HelperCategories = [
+                "eat",
+                "edible",
+                "comestible",
+                "nutrition",
+                "diet"
+            ]
+        },
+        new WordCategory
+        {
+            Category = "name",
+            HelperCategories = [
+                "person",
+                "alias",
+                "known as",
+                "born"
+            ]
+        },
+        new WordCategory
+        {
+            Category = "profession",
+            HelperCategories = [
+                "work",
+                "job",
+                "occupation"
+            ]
+        },
+        new WordCategory
+        {
+            Category = "country",
+            HelperCategories = [
+                "state",
+                "nation",
+                "land",
+                "realm"
+            ]
+        },
+        new WordCategory
+        {
+            Category = "city",
+            HelperCategories = [
+                "town",
+                "village",
+                "metropolis",
+                "urban",
+                "municipality",
+                "capital"
+            ]
+        },
+        new WordCategory
+        {
+            Category = "vehicle",
+            HelperCategories = [
+                "transport",
+                "car",
+                "motor",
+                "bicycle",
+                "ship",
+                "plane",
+                "mobile",
+                "auto"
+            ]
+        },
+        new WordCategory
+        {
+            Category = "tool",
+            HelperCategories = [
+                "utensil",
+                "instrument",
+                "apparatus",
+                "fix",
+                "tinker"
+            ]
+        },
     ];
 
     private readonly string[] _constraintCategories = [
@@ -69,8 +169,8 @@ public partial class WordsGamePage : ContentPage
         _letter = Convert.ToChar(asciiCode);
 
         // Build question
-        string article = _vowels.Contains(_wordCategories[_wordCategoryIndex][0]) ? "An" : "A";
-        questionText = $"{article} {_wordCategories[_wordCategoryIndex]} that {_constraintCategories[_constraintCategoryIndex]}: {_letter}";
+        string article = _vowels.Contains(_wordCategories[_wordCategoryIndex].Category[0]) ? "An" : "A";
+        questionText = $"{article} {_wordCategories[_wordCategoryIndex].Category} that {_constraintCategories[_constraintCategoryIndex]}: {_letter}";
 
         QuestionLabel.Text = questionText;
     }
@@ -148,7 +248,7 @@ public partial class WordsGamePage : ContentPage
             return false;
 
         // Call the Wiktionary API to check if the answer is a valid word
-        Task<bool> wikiCheckTask = WiktionaryController.GetWikiData(answer);
+        Task<bool> wikiCheckTask = WikipediaApi.GetWikiData(answer, _wordCategories[_wordCategoryIndex]);
         bool result = await wikiCheckTask;
 
         return result == true ? true : false;
