@@ -5,7 +5,9 @@ VisualStudioVersion = 17.8.34525.116
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MathOrWords", "MathOrWords\MathOrWords.csproj", "{843225B5-F9EE-4FE0-973B-1EAF9B2B007C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestMathOrWords", "UnitTestMathOrWords\UnitTestMathOrWords.csproj", "{C58046A9-AEC7-406D-90DD-1D7FF84F46FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTestMathOrWords", "UnitTestMathOrWords\UnitTestMathOrWords.csproj", "{C58046A9-AEC7-406D-90DD-1D7FF84F46FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathOrWordsAPI", "MathOrWordsAPI\MathOrWordsAPI.csproj", "{4B836E4A-9CE2-439A-95E4-58FD9F9CB6E9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +25,10 @@ Global
 		{C58046A9-AEC7-406D-90DD-1D7FF84F46FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C58046A9-AEC7-406D-90DD-1D7FF84F46FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C58046A9-AEC7-406D-90DD-1D7FF84F46FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B836E4A-9CE2-439A-95E4-58FD9F9CB6E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B836E4A-9CE2-439A-95E4-58FD9F9CB6E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B836E4A-9CE2-439A-95E4-58FD9F9CB6E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B836E4A-9CE2-439A-95E4-58FD9F9CB6E9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

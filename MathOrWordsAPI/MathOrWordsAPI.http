@@ -1,0 +1,6 @@
+@MathOrWordsAPI_HostAddress = http://localhost:5291
+
+GET {{MathOrWordsAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
