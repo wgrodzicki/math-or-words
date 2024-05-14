@@ -4,29 +4,29 @@ namespace MathOrWords;
 
 public partial class MathGamePage : ContentPage
 {
-	private const int DivisionUpperLimit = 100;
-	private const int MultiplicationUpperLimit = 11;
-	private const int AdditionSubtractionUpperLimit = 100;
+    private const int DivisionUpperLimit = 100;
+    private const int MultiplicationUpperLimit = 11;
+    private const int AdditionSubtractionUpperLimit = 100;
     private const int IncorrectAnswersAllowed = 3;
 
-	private string _variant;
+    private string _variant;
     private int _firstOperand = 0;
-	private int _secondOperand = 0;
-	private int _score = 0;
-	private int _incorrectAnswers = 0;
+    private int _secondOperand = 0;
+    private int _score = 0;
+    private int _incorrectAnswers = 0;
 
-	public MathGamePage(string variant)
-	{
-		InitializeComponent();
-		_variant = variant;
+    public MathGamePage(string variant)
+    {
+        InitializeComponent();
+        _variant = variant;
 
         BindingContext = this;
-		
-		NextEquationButton.IsEnabled = false;
+
+        NextEquationButton.IsEnabled = false;
         IncorrectCounterLabel.Text = $"Attempts: {IncorrectAnswersAllowed - _incorrectAnswers}/{IncorrectAnswersAllowed}";
         ScoreLabel.Text = $"Score: {_score}";
         GenerateEquation();
-	}
+    }
 
 
     /// <summary>
@@ -75,28 +75,28 @@ public partial class MathGamePage : ContentPage
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void OnAnswerSubmitted(object sender, EventArgs e)
-	{
-		string rawAnswer = AnswerEntry.Text;
-		int answer;
+    {
+        string rawAnswer = AnswerEntry.Text;
+        int answer;
 
         AnswerLabel.IsVisible = true;
 
         // Initial verification if the answer is an int
         if (int.TryParse(rawAnswer, out answer))
-		{
+        {
             AnswerEntry.IsEnabled = false;
 
             if (ValidateAnswer(answer))
-			{
+            {
                 AnswerLabel.Text = "Correct!";
-				_score++;
+                _score++;
                 ScoreLabel.Text = $"Score: {_score}";
                 SubmitAnswerButton.IsVisible = false;
             }
-			else
-			{
+            else
+            {
                 AnswerLabel.Text = "Incorrect";
-				_incorrectAnswers++;
+                _incorrectAnswers++;
                 IncorrectCounterLabel.Text = $"Attempts: {IncorrectAnswersAllowed - _incorrectAnswers}/{IncorrectAnswersAllowed}";
                 SubmitAnswerButton.IsVisible = false;
             }
@@ -107,44 +107,44 @@ public partial class MathGamePage : ContentPage
             }
             else
             {
-				GamePage.GameOver(_score, GameMode.Math, EquationArea, GameOverLabel, IncorrectCounterLabel, ScoreLabel, ReturnButton, _variant);
+                GamePage.GameOver(_score, GameMode.Math, EquationArea, GameOverLabel, IncorrectCounterLabel, ScoreLabel, ReturnButton, _variant);
             }
         }
-		else
-		{
+        else
+        {
             AnswerLabel.Text = "Invalid answer";
         }
-	}
+    }
 
 
-	/// <summary>
-	/// Validates player answer depending on the math operation.
-	/// </summary>
-	/// <param name="answer"></param>
-	/// <returns></returns>
-	private bool ValidateAnswer(int answer)
-	{
-		switch (_variant)
-		{
-			case "Addition":
-				return _firstOperand + _secondOperand == answer ? true : false;
-			case "Subtraction":
+    /// <summary>
+    /// Validates player answer depending on the math operation.
+    /// </summary>
+    /// <param name="answer"></param>
+    /// <returns></returns>
+    private bool ValidateAnswer(int answer)
+    {
+        switch (_variant)
+        {
+            case "Addition":
+                return _firstOperand + _secondOperand == answer ? true : false;
+            case "Subtraction":
                 return _firstOperand - _secondOperand == answer ? true : false;
-			case "Multiplication":
+            case "Multiplication":
                 return _firstOperand * _secondOperand == answer ? true : false;
-			case "Division":
+            case "Division":
                 return _firstOperand / _secondOperand == answer ? true : false;
-			default:
-				return false;
-		}
-	}
+            default:
+                return false;
+        }
+    }
 
 
-	/// <summary>
-	/// Displays the next equation.
-	/// </summary>
-	/// <param name="sender"></param>
-	/// <param name="e"></param>
+    /// <summary>
+    /// Displays the next equation.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void OnNextEquationChosen(object sender, EventArgs e)
     {
         AnswerEntry.IsEnabled = true;
@@ -157,16 +157,16 @@ public partial class MathGamePage : ContentPage
         NextEquationButton.IsEnabled = false;
 
         GenerateEquation();
-	}
+    }
 
 
-	/// <summary>
-	/// Switches back to the main page.
-	/// </summary>
-	/// <param name="sender"></param>
-	/// <param name="e"></param>
-	private void OnReturnButtonChosen(object sender, EventArgs e)
-	{
-		GamePage.ReturnToMainPage();
+    /// <summary>
+    /// Switches back to the main page.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void OnReturnButtonChosen(object sender, EventArgs e)
+    {
+        GamePage.ReturnToMainPage();
     }
 }

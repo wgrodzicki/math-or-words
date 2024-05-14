@@ -1,4 +1,4 @@
-﻿using MathOrWords.Models;
+﻿using MathOrWords.Controllers;
 
 namespace MathOrWords
 {
@@ -36,7 +36,12 @@ namespace MathOrWords
         /// <param name="e"></param>
         private void OnWordsGameChosen(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new WordsGamePage());
+            // Make sure there is internet connection
+            if (Connectivity.Current.NetworkAccess == NetworkAccess.None || Connectivity.Current.NetworkAccess == NetworkAccess.Unknown)
+                DisplayAlert("No internet connection", "The Words game is inaccessible without internet connection.", "OK");
+            else
+                Navigation.PushAsync(new WordsGamePage());
+
         }
 
 

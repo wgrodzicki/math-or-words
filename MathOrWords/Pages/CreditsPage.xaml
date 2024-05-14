@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MathOrWords.CreditsPage"
              BackgroundImageSource="background_blue.png">
-    
+
     <ContentView>
 
         <VerticalStackLayout Spacing="25"
@@ -32,7 +32,7 @@
 
                 </Grid.ColumnDefinitions>
 
-                <Label Text="Basic code structure and techniques by The C# Academy"
+                <Label Text="Initial project blueprint inspired by The C# Academy"
                        FontSize="18"
                        Margin="5"
                        HorizontalTextAlignment="Center"
@@ -70,7 +70,7 @@
             </Grid>
 
         </VerticalStackLayout>
-        
+
     </ContentView>
-    
+
 </ContentPage>

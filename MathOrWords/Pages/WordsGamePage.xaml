@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MathOrWords.MathGamePage"
+             x:Class="MathOrWords.WordsGamePage"
              BackgroundImageSource="background_blue.png">
-    
+
     <VerticalStackLayout Padding="25">
 
         <Label x:Name="IncorrectCounterLabel"
@@ -11,43 +11,28 @@
                FontSize="24"
                VerticalOptions="Center"
                HorizontalOptions="Start" />
-        
+
         <Label x:Name="ScoreLabel"
                Text="Score: 0"
                FontSize="24"
                VerticalOptions="Center"
                HorizontalOptions="Start" />
 
-        <VerticalStackLayout x:Name="EquationArea"
+        <VerticalStackLayout x:Name="QuestionArea"
                              Padding="25"
                              Spacing="25">
 
-            <Grid ColumnDefinitions="*, 0.2*, *"
-                  RowDefinitions="*">
+            <Label x:Name="QuestionLabel"
+                   FontSize="32"
+                   HorizontalTextAlignment="Center"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center" />
 
-                <Label x:Name="EquationLabel"
-                       FontSize="50"
-                       HorizontalTextAlignment="Center"
-                       VerticalOptions="Center"
-                       HorizontalOptions="End"
-                       Margin="0, 0, 0, 0"
-                       Grid.Column="0" />
-
-                <Label x:Name="EqualSignLabel"
-                       Text="="
-                       FontSize="50"
-                       HorizontalTextAlignment="Center"
-                       VerticalOptions="Center"
-                       HorizontalOptions="Center"
-                       Grid.Column="1" />
-
-                <Entry x:Name="AnswerEntry"
-                       FontSize="45"
-                       HorizontalOptions="Start"
-                       MinimumWidthRequest="100"
-                       Grid.Column="2" />
-
-            </Grid>
+            <Entry x:Name="AnswerEntry"
+                   FontSize="32"
+                   MinimumWidthRequest="100"
+                   HorizontalOptions="Center">
+            </Entry>
 
             <Button x:Name="SubmitAnswerButton"
                     Text="Submit"
@@ -60,11 +45,11 @@
                    VerticalOptions="Center" 
                    HorizontalOptions="Center" />
 
-            <Button x:Name="NextEquationButton"
-                    Text="Next equation"
-                    Clicked="OnNextEquationChosen"
+            <Button x:Name="NextQuestionButton"
+                    Text="Next question"
+                    Clicked="OnNextQuestionChosen"
                     HorizontalOptions="Center" />
-            
+
         </VerticalStackLayout>
 
         <Label x:Name="GameOverLabel"
@@ -75,11 +60,11 @@
                HorizontalOptions="Center" />
 
         <Button x:Name="ReturnButton"
+                IsVisible="false"
                 Text="Return to main menu"
                 Clicked="OnReturnButtonChosen"
-                IsVisible="false"
                 HorizontalOptions="Center" />
-        
+
     </VerticalStackLayout>
-    
+
 </ContentPage>

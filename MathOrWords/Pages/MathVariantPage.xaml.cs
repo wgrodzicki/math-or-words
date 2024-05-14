@@ -2,11 +2,11 @@ namespace MathOrWords;
 
 public partial class MathVariantPage : ContentPage
 {
-	public MathVariantPage()
-	{
-		InitializeComponent();
-		BindingContext = this;
-	}
+    public MathVariantPage()
+    {
+        InitializeComponent();
+        BindingContext = this;
+    }
 
 
     /// <summary>
@@ -15,9 +15,9 @@ public partial class MathVariantPage : ContentPage
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void OnMathOptionChosen(object sender, EventArgs e)
-	{
-		Button button = (Button)sender;
+    {
+        Button button = (Button)sender;
 
         Navigation.PushAsync(new MathGamePage(button.Text));
-	}
+    }
 }

@@ -9,17 +9,17 @@
 
             <Grid RowDefinitions="70"
                   ColumnDefinitions="2*, *, *, *, *">
-                
+
                 <Label Text="Date"
                        FontSize="32"
                        HorizontalTextAlignment="Center"
                         Grid.Column="0" />
-                
+
                 <Label Text="Score"
                        FontSize="32"
                        HorizontalTextAlignment="Center"
                         Grid.Column="1" />
-                
+
                 <Label Text="Mode"
                        FontSize="32"
                        HorizontalTextAlignment="Center"
@@ -31,12 +31,12 @@
                        Grid.Column="3" />
 
             </Grid>
-            
-            
+
+
             <CollectionView x:Name="GamesList">
-                
+
                 <CollectionView.ItemTemplate>
-                    
+
                     <DataTemplate>
 
                         <Grid RowDefinitions="40"
@@ -46,17 +46,17 @@
                                    FontSize="24"
                                    HorizontalTextAlignment="Center"
                                    Grid.Column="0" />
-                            
+
                             <Label Text="{Binding Score}"
                                    FontSize="24"
                                    HorizontalTextAlignment="Center"
                                    Grid.Column="1" />
-                            
+
                             <Label Text="{Binding GameMode}"
                                    FontSize="24"
                                    HorizontalTextAlignment="Center"
                                    Grid.Column="2" />
-                            
+
                             <Label Text="{Binding MathVariant}"
                                    FontSize="24"
                                    HorizontalTextAlignment="Center"
@@ -75,15 +75,15 @@
                                          Grid.Column="4" />
 
                         </Grid>
-                        
+
                     </DataTemplate>
-                    
+
                 </CollectionView.ItemTemplate>
-                
+
             </CollectionView>
-            
+
         </VerticalStackLayout>
-        
+
     </ScrollView>
-    
+
 </ContentPage>
