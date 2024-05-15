@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MathOrWords", "MathOrWords\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTestMathOrWords", "UnitTestMathOrWords\UnitTestMathOrWords.csproj", "{C58046A9-AEC7-406D-90DD-1D7FF84F46FD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathOrWordsAPI", "MathOrWordsAPI\MathOrWordsAPI.csproj", "{4B836E4A-9CE2-439A-95E4-58FD9F9CB6E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MathOrWordsAPI", "MathOrWordsAPI\MathOrWordsAPI.csproj", "{4B836E4A-9CE2-439A-95E4-58FD9F9CB6E9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
