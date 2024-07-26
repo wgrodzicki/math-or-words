@@ -5,7 +5,7 @@ VisualStudioVersion = 17.8.34525.116
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MathOrWords", "MathOrWords\MathOrWords.csproj", "{843225B5-F9EE-4FE0-973B-1EAF9B2B007C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestMathOrWords", "UnitTestMathOrWords\UnitTestMathOrWords.csproj", "{C58046A9-AEC7-406D-90DD-1D7FF84F46FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTestMathOrWords", "UnitTestMathOrWords\UnitTestMathOrWords.csproj", "{C58046A9-AEC7-406D-90DD-1D7FF84F46FD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
